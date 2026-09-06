@@ -1,0 +1,56 @@
+examples:
+  - id: draft-20year-plan
+    title:
+      zh: 撰写二十年长期规划
+      en: Draft a 20-year life plan
+    description:
+      zh: 基于 wiki-life 库新建一份方向性的长期人生规划草稿
+      en: Create a directional long-term life-plan draft from the wiki-life vault
+    prompt:
+      zh: |-
+        根据我 wiki-life 库里各方面的实际情况、需求和目标，帮我整理一份全面的长期规划（20 年或以上），方向性的，用来指明方向。
+        库路径：{{wiki-life 路径，没有则让你自动探测}}
+        先出草稿给我审阅，审定后再按 WIKI-SCHEMA 入库。
+      en: |-
+        Based on my actual situation, needs and goals in the wiki-life vault, put together a comprehensive directional life plan of 20+ years.
+        Vault path: {{wiki-life path, or let me auto-detect}}
+        Draft for my review first; ingest via WIKI-SCHEMA only after I approve.
+
+  - id: annual-calibration
+    title:
+      zh: 年度规划校准（9 月）
+      en: Annual plan calibration (September)
+    description:
+      zh: 对既有长期规划做每年增量校准，只改变动处
+      en: Do the yearly incremental calibration of an existing plan
+    prompt:
+      zh: |-
+        对 {{规划文档路径}} 做今年的年度校准：读取当年 execution 层的变化与新事实，只改变动处并升版本，政策/价格类事实重新 WebSearch 核实，先给我审阅再入库。
+      en: |-
+        Calibrate {{plan file path}} for this year: read the year's changes in the execution layer plus new facts, revise only what changed and bump the version, re-verify policy/price facts via WebSearch, and let me review before ingesting.
+
+  - id: five-year-review
+    title:
+      zh: 五年阶段复盘
+      en: Five-year phase review
+    description:
+      zh: 以阶段为单位回看假设与现实并重排触发器
+      en: Review assumptions vs reality per phase and re-sequence triggers
+    prompt:
+      zh: |-
+        对 {{规划文档路径}} 做一次五年复盘（锚点如 {{2029/2035/2041/2046}}）：按阶段回看当初假设与实际发生的差距，更新阶段与触发器，把结论回灌 framework/人生阶段与目标，产出新版本主文档+附录，审定后入库。
+      en: |-
+        Run a five-year review of {{plan file path}} (anchors like {{2029/2035/2041/2046}}): compare each phase's assumptions against what happened, update phases and triggers, feed conclusions back into framework/人生阶段与目标, output a new version of the main doc plus appendix, and ingest after approval.
+
+  - id: reevaluate-with-new-fact
+    title:
+      zh: 提供新事实重估规划
+      en: Re-evaluate the plan with a new fact
+    description:
+      zh: 给一条新事实，让 agent 判断推翻了什么并逐处联动改
+      en: Give one new fact and have the agent judge what it overturns and update all linked spots
+    prompt:
+      zh: |-
+        这条新事实需要并入 {{规划文档路径}} 重估：{{新事实，如某位老人的确诊/一笔存款/一处政策变化}}。先判断它推翻了上一版的哪些结论，grep 找齐联动处（速览表、失败清单、附录），名义/实际口径核对清楚，客观事实走 WebSearch，改完把两文件发我审阅。
+      en: |-
+        Fold this new fact into {{plan file path}} and reassess: {{new fact, e.g. a diagnosis / a deposit / a policy change}}. First judge which prior conclusions it overturns, grep for every linked spot (summary table, failure list, appendix), reconcile nominal vs real figures, verify objective facts via WebSearch, then send me both files for review.

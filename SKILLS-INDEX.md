@@ -9,6 +9,7 @@
 | **[fin-statement-bridge](./fin-statement-bridge/SKILL.md)** | 高研发公司净利润 Bridge 拆解：净利增速与收入背离、股份支付(SBC)扭曲利润、净利率归因 | 对话：分析海光/寒武纪/摩尔线程/沐曦等财报时说「拆解净利增速为什么背离」 | 半年报利润表 + 费用/股份支付附注；有效所得税率反推 |
 | **[llm-wiki](./llm-wiki/SKILL.md)** | 用 LLM 增量构建维护个人知识库 wiki（非 RAG）：ingest → 交叉引用 → 综合 → 定期 lint | 对话：所有涉及 wiki 的读写/入库/提问；默认库 `~/.workbuddy/wiki-knowledge/`（另有 wiki-life） | WIKI-SCHEMA.md 约定；index/log 维护；git 同步 |
 | **[tencent-news](./tencent-news/SKILL.md)** | 7×24 腾讯新闻搜索：热榜、早报/晚报、实时资讯、领域新闻、天气 | 对话：「看今天热点」「早报」「财经新闻」；底层 CLI：`scripts/run-cli.sh help`（Windows 用 `.ps1`） | `tencent-news-cli` + API Key；需先 `cli-state` 检查环境 |
+| **[wiki-life-plan-authoring](./wiki-life-plan-authoring/SKILL.md)** | 编撰/年审 20 年期方向性人生规划：从 wiki-life 库建真实画像 → 方向层主文档 + 论证层附录双文件 → 逐轮先判推翻什么再联动改，数字名义/实际口径校验，审定后按 WIKI-SCHEMA 入库 | 对话：「整理/修订二十年人生规划」「给条新事实重估」「每年 9 月校准 / 五年复盘」；给 wiki-life 路径或自动探测 | `~/.workbuddy/wiki-life/` 库；llm-wiki 的 WIKI-SCHEMA 约定；WebSearch 核政策/价格；私有库 git 同步 |
 
 ---
 
@@ -39,6 +40,14 @@
 - **干什么**：7×24 新闻/热榜/早晚报/领域新闻/天气查询，聚焦国内与国际热点。
 - **环境就绪**：`cli-state` 检查 CLI 与 API Key → 缺失时安装/配置（Key 从 news.qq.com/exchange 获取）。
 - **核心约束**：所有调用走 `run-cli` 脚本，先读 `help` 不硬编码；CLI 失败不降级到 WebSearch。
+
+### 6. wiki-life-plan-authoring — 长期人生规划编撰与年审
+- **干什么**：基于 `~/.workbuddy/wiki-life/`（人生系统库）编撰或年度复核一份 20 年期方向性人生规划。核心不是一次写完，而是「建真实画像 → 定规格 → 分层产出 → 逐条校对 → 先审后入库」。
+- **产出结构**：主文档＝方向层（终局视角、阶段划分、触发器而非日历、失败清单、五要素速览、事实确认状态、近期衔接）；附录＝论证层（通胀/财务测算、保险精析、政策与尾部风险、口径推导）。两文件用 §编号互指，命名 `<跨度>人生规划-<起年>-<止年>`。
+- **关键纪律**：新事实先判定推翻了什么再逐处 grep 联动改；金额/年龄换算并显式声明**名义 vs 实际**口径；政策/价格等客观事实一律 WebSearch 核实并标时点；隐私数字**「只留线不留账」**（方向层只留阈值与带宽，明细留附录）；**未审定绝不写库**。
+- **入库**：用户点头后按 WIKI-SCHEMA 落 `framework/`＋`synthesis/`，补双链、更新 index、在 log 追加、git commit；远程为私有库才 push。
+- **依赖/关联**：复用 llm-wiki 的三层架构与 WIKI-SCHEMA 约定；只操作内在库 wiki-life，与对外研报库 wiki-knowledge 不混。
+- **已踩坑（写进 SKILL 的 Pitfalls）**：换轮后 Edit 报 "File has not been read yet"→先整文件 Read；old_string 失配→Grep 取精确原文再替换；成段替换后检查重复残留；版本标记三处联动；数字联动清单（改一处先 Grep 找齐）。
 
 ---
 
