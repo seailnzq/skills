@@ -10,6 +10,7 @@
 | **[llm-wiki](./llm-wiki/SKILL.md)** | 用 LLM 增量构建维护个人知识库 wiki（非 RAG）：ingest → 交叉引用 → 综合 → 定期 lint | 对话：所有涉及 wiki 的读写/入库/提问；默认库 `~/.workbuddy/wiki-knowledge/`（另有 wiki-life） | WIKI-SCHEMA.md 约定；index/log 维护；git 同步 |
 | **[tencent-news](./tencent-news/SKILL.md)** | 7×24 腾讯新闻搜索：热榜、早报/晚报、实时资讯、领域新闻、天气 | 对话：「看今天热点」「早报」「财经新闻」；底层 CLI：`scripts/run-cli.sh help`（Windows 用 `.ps1`） | `tencent-news-cli` + API Key；需先 `cli-state` 检查环境 |
 | **[wiki-life-plan-authoring](./wiki-life-plan-authoring/SKILL.md)** | 编撰/年审 20 年期方向性人生规划：从 wiki-life 库建真实画像 → 方向层主文档 + 论证层附录双文件 → 逐轮先判推翻什么再联动改，数字名义/实际口径校验，审定后按 WIKI-SCHEMA 入库 | 对话：「整理/修订二十年人生规划」「给条新事实重估」「每年 9 月校准 / 五年复盘」；给 wiki-life 路径或自动探测 | `~/.workbuddy/wiki-life/` 库；llm-wiki 的 WIKI-SCHEMA 约定；WebSearch 核政策/价格；私有库 git 同步 |
+| **[jin-guantao-cybernetics](./jin-guantao-cybernetics/SKILL.md)** | 《控制论与科学方法论》（金观涛/华国凡）知识库技能：可能性空间、控制能力 M/m、共轭控制、负反馈、滤波七法、相对孤立系统、稳态结构、超稳定、自组织、突变理论（飞跃/渐变判据）、黑箱认识论五部位排查 | 对话：说「用 jin-guantao-cybernetics 讲 X」/「ch04 飞跃判据」；用于决策、系统分析、认识失灵排查时引用作者框架 | book-to-skill 生成（扫描版视觉 OCR）；SKILL.md+5 章节文件+术语表+patterns+cheatsheet |
 
 ---
 
