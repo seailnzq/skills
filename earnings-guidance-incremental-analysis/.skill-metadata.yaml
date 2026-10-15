@@ -1,0 +1,86 @@
+examples:
+  - id: incremental-info
+    title:
+      zh: 拆解预告增量信息
+      en: Dissect guidance incremental info
+    description:
+      zh: 对某公司的业绩预告/快报做增量信息梳理
+      en: Pull the incremental signal out of a company's earnings guidance or flash report
+    prompt:
+      zh: |-
+        请用"增量信息"框架分析这家公司这次的业绩预告：
+
+        公司/代码：{{股票代码或公司名}}
+        预告期：{{如 2026 年前三季度}}
+
+        要求：先锚定公告口径与是否审计，再与上一次披露（中报预告/中报/快报）逐条比对措辞与数字，拆表观与调整后口径，反推单季与增速剪刀差，列出预告未披露、需季报确认的验证项（合同负债、经营现金流、存货、关联交易），并明确标注哪些是公告原值、哪些是你的推算。
+      en: |-
+        Use the incremental-information framework on this company's earnings guidance:
+
+        Company/ticker: {{ticker or company}}
+        Guidance period: {{e.g. 2026 first three quarters}}
+
+        Anchor the caliber and audit status, diff wording and figures against the prior disclosure, split reported vs adjusted calibers, back out the marginal quarter and the growth scissors gap, list items the guidance omits that need the full report to verify, and clearly label facts vs estimates.
+
+  - id: peer-attribution
+    title:
+      zh: 判定行业共性还是公司独有
+      en: Industry-common vs company-specific
+    description:
+      zh: 用统一口径同业可比表，判断问题是行业共性还是标的独有
+      en: Build a same-caliber peer table to attribute the issue as industry-common or company-specific
+    prompt:
+      zh: |-
+        针对 {{公司/代码}} 这次预告暴露的"{{问题，如利润增速低于营收增速}}"，请做同业对比分析：
+
+        同业范围：{{如同环节 CPU/GPU 厂商，或让助手补全}}
+
+        用统一口径（同一累计区间、各取自家公告）列同业镜像表，算每家的营收—归母—扣非剪刀差，然后逐条区分哪些属行业共性、哪些是该公司独有，孤例不要升格为共性。
+      en: |-
+        For the "{{issue, e.g. profit growth lagging revenue}}" that {{company/ticker}}'s guidance surfaced, run a peer comparison:
+
+        Peer set: {{same-segment peers, or let the agent fill in}}
+
+        Use one caliber (same cumulative period, each from its own filing), build a mirror table with each peer's revenue-parent-deducted scissors gap, then attribute line by line as industry-common vs company-specific; do not promote an outlier to a commonality.
+
+  - id: single-quarter-backout
+    title:
+      zh: 反推单季与剪刀差
+      en: Back out single quarter and scissors gap
+    description:
+      zh: 从累计预告反推边际单季的增速、环比与隐含净利率
+      en: Back-derive the marginal quarter's growth, QoQ and implied net margin from a cumulative guidance
+    prompt:
+      zh: |-
+        已知 {{公司/代码}} 的 {{累计区间，如前三季度}} 预告与 {{更早区间，如上半年}} 已披露数据，请反推单季：
+
+        累计预告营收/归母：{{数值或区间}}
+        已披露上半年营收/归母：{{数值}}
+        上年同期各区间：{{数值}}
+
+        算出单季同比、环比、隐含净利率与"营收—归母"剪刀差（pct），并与上一期剪刀差比较是收敛还是扩大，标注这些均为推算值。
+      en: |-
+        Given {{ticker}}'s {{cumulative period}} guidance and its already-disclosed {{earlier period}}, back out the marginal single quarter:
+
+        Cumulative guided revenue/net profit: {{values or ranges}}
+        Disclosed prior sub-period: {{values}}
+        Year-ago figures for each span: {{values}}
+
+        Compute the quarter's YoY, QoQ, implied net margin and the revenue-vs-net-profit scissors gap (pct), compare it to the prior period's gap for convergence or widening, and label all of these as estimates.
+
+  - id: verify-checklist
+    title:
+      zh: 列未披露验证项
+      en: List undisclosed verification items
+    description:
+      zh: 生成预告未披露、需正式季报确认的前瞻清单
+      en: Produce the forward checklist of items the guidance omits that the full report must confirm
+    prompt:
+      zh: |-
+        针对 {{公司/代码}} 的 {{预告期}} 业绩预告，请列出本次预告未披露、但决定下一季定价、需在正式季报里重点验证的科目。
+
+        至少覆盖：合同负债/在手订单、经营现金流与净现比、存货、预付款、毛利率、关联交易。说明每项为什么关键、以及当前已知值的方向，并明确标注"待季报确认"。
+      en: |-
+        For {{ticker}}'s {{period}} earnings guidance, list the items the guidance omits that drive next-quarter pricing and must be verified in the full report.
+
+        Cover at least contract liabilities/backlog, operating cash flow and the cash-to-net-income ratio, inventory, prepayments, gross margin, and related-party transactions. Explain why each matters and its current known direction, and mark each as pending the full report.

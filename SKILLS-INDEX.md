@@ -11,6 +11,7 @@
 | **[tencent-news](./tencent-news/SKILL.md)** | 7×24 腾讯新闻搜索：热榜、早报/晚报、实时资讯、领域新闻、天气 | 对话：「看今天热点」「早报」「财经新闻」；底层 CLI：`scripts/run-cli.sh help`（Windows 用 `.ps1`） | `tencent-news-cli` + API Key；需先 `cli-state` 检查环境 |
 | **[wiki-life-plan-authoring](./wiki-life-plan-authoring/SKILL.md)** | 编撰/年审 20 年期方向性人生规划：从 wiki-life 库建真实画像 → 方向层主文档 + 论证层附录双文件 → 逐轮先判推翻什么再联动改，数字名义/实际口径校验，审定后按 WIKI-SCHEMA 入库 | 对话：「整理/修订二十年人生规划」「给条新事实重估」「每年 9 月校准 / 五年复盘」；给 wiki-life 路径或自动探测 | `~/.workbuddy/wiki-life/` 库；llm-wiki 的 WIKI-SCHEMA 约定；WebSearch 核政策/价格；私有库 git 同步 |
 | **[jin-guantao-cybernetics](./jin-guantao-cybernetics/SKILL.md)** | 《控制论与科学方法论》（金观涛/华国凡）知识库技能：可能性空间、控制能力 M/m、共轭控制、负反馈、滤波七法、相对孤立系统、稳态结构、超稳定、自组织、突变理论（飞跃/渐变判据）、黑箱认识论五部位排查 | 对话：说「用 jin-guantao-cybernetics 讲 X」/「ch04 飞跃判据」；用于决策、系统分析、认识失灵排查时引用作者框架 | book-to-skill 生成（扫描版视觉 OCR）；SKILL.md+5 章节文件+术语表+patterns+cheatsheet |
+| **[earnings-guidance-incremental-analysis](./earnings-guidance-incremental-analysis/SKILL.md)** | A 股业绩预告/快报「增量信息」拆解：与上次披露 diff 措辞与数字 → 拆表观 vs 调整后口径 → 反推单季与增速剪刀差 → 列预告未披露的验证项 → 同业镜像表分「行业共性 vs 公司独有」→ 每个数字标注推算/未核实 | 对话：拿到某公司业绩预告后说「拆增量信息」「这是行业共性还是公司独有」「反推单季」 | 公告原文 + 上一次同主体披露（中报预告/中报/快报）；`qwenwork_web_search` 核数 |
 
 ---
 
@@ -49,6 +50,13 @@
 - **入库**：用户点头后按 WIKI-SCHEMA 落 `framework/`＋`synthesis/`，补双链、更新 index、在 log 追加、git commit；远程为私有库才 push。
 - **依赖/关联**：复用 llm-wiki 的三层架构与 WIKI-SCHEMA 约定；只操作内在库 wiki-life，与对外研报库 wiki-knowledge 不混。
 - **已踩坑（写进 SKILL 的 Pitfalls）**：换轮后 Edit 报 "File has not been read yet"→先整文件 Read；old_string 失配→Grep 取精确原文再替换；成段替换后检查重复残留；版本标记三处联动；数字联动清单（改一处先 Grep 找齐）。
+
+### 7. earnings-guidance-incremental-analysis — 业绩预告增量分析
+- **干什么**：把「公司写了什么」翻译成「市场该重新定价什么」。核心不是复述预告数字，而是找**相对上一次披露的边际变化**、拆口径、反推单季、列未验证项、用同业镜像区分共性与独有。
+- **七步**：①锚定预告口径（自愿/强制、是否审计）→ ②与上一披露逐条 diff（归因**措辞质变** > 新量化项 > 口径变化）→ ③表观 vs 调整后拆口径（**先查 SBC 的同比基数增量**，别默认剪刀差主因是股权激励，常在毛利率）→ ④累计−上半年=单季反推 + 营收/归母/扣非剪刀差（pct，看上上期是否收敛）→ ⑤列预告未披露的验证项（**合同负债、经营现金流/净现比**通常比存货金额更具决策价值）→ ⑥同业镜像表统一口径分「行业共性 vs 公司独有」→ ⑦每个数字标 `公告/推算/卖方/未核实`。
+- **判定纪律**：孤例不得升格为「行业共性」；扭亏/低基数公司表观增速可能名义无解，看扣非绝对额占表观比；AI 聚合站/自媒体测算需交叉验证或弃用。
+- **重叠提示**：与 `fin-statement-bridge` 在「SBC 扭曲、净利 vs 营收背离、海光/寒武纪/摩尔线程/沐曦同业」有交叉；本技能更宽（预告专属：增量 diff、单季反推、前瞻验证清单、未披露项），`fin-statement-bridge` 更聚焦利润表 Bridge 归因，两者互补。
+- **关联**：常与 `cninfo-financial-reports`（取公告）、`a-share-headline-earnings`（行业全景）、`fin-statement-bridge`（深度 Bridge）串联。
 
 ---
 
