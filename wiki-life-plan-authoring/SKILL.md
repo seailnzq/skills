@@ -4,12 +4,12 @@ name_en: Wiki-Life Long-Term Planning Doc
 name_zh: 长期人生规划文档编撰与年审
 description: Author or annually review a long-term (20+ year) directional life-plan grounded in the user's wiki-life Obsidian vault. Build a real-data profile from the library, confirm placement/horizon/bridging via AskUserQuestion, then produce a directional main doc (phases + triggers + failure list) plus an argumentation appendix; on each new fact judge what it overturns; cross-check every number with nominal-vs-real framing; verify objective facts with WebSearch; iterate in the workspace and never write to the vault before approval; finally ingest per WIKI-SCHEMA with bidirectional links, log, and git. Use when the user asks to draft/revise/audit a comprehensive or 20-year life plan, supplies new facts requiring re-evaluation, or asks to calibrate the plan each year / do a five-year review.
 description_en: Author or annually review a 20+ year directional life-plan grounded in the wiki-life vault: build a profile, output a directional main doc plus argumentation appendix, iterate by judging what each new fact overturns, cross-check numbers, verify facts via WebSearch, then ingest after approval.
-description_zh: 在用户的 Obsidian 库 wiki-life 上编撰或复核人生规划类长文档（长期/多年期方向性规划、养老退休测算、年度复核）。当用户要求制定/修订/审视人生规划、编撰多年期规划文档、提供新事实要求重估规划、要求批判性检查规划盲区，或要求把审定后的规划入库时使用。覆盖读库顺序、先问落点与跨度、方向层+论证层双文件结构、财务口径四查（名义/实际折现、结构通胀分化、方差三档、可逆窗口）、退休资金池通胀敏感性测算（需求档×通胀档两轴 NPV 表、六模块拆解与通胀免疫/高敏标注）、审视报告五分法（区分客观规律与价值判断）、审视式迭代、客观事实必须 WebSearch 核实、审定前不写库、金额明文显式覆盖规程（默认基准指数+比值脱敏→API 核查私有→log 记覆盖→页顶留脱敏提示）、WIKI-SCHEMA 入库与年度复核流程。
+description_zh: 在用户的 Obsidian 库 wiki-life 上编撰或复核人生规划类长文档（长期/多年期方向性规划、养老退休测算、年度复核）。当用户要求制定/修订/审视人生规划、编撰多年期规划文档、提供新事实要求重估规划、要求批判性检查规划盲区，或要求把审定后的规划入库时使用。覆盖读库顺序、先问落点与跨度、方向层+论证层双文件结构、财务口径四查（名义/实际折现、结构通胀分化、方差三档、可逆窗口）、退休资金池通胀敏感性测算（需求档×通胀档两轴 NPV 表、六模块拆解与通胀免疫/高敏标注）、审视报告五分法（区分客观规律与价值判断）、审视式迭代、客观事实必须 WebSearch 核实、审定前不写库、金额明文显式覆盖规程（默认基准指数+比值脱敏→API 核查私有→改回明文→一致性修正→页内限定→log 记覆盖+页顶留脱敏提示；私有≠默认可覆盖）、WIKI-SCHEMA 入库与年度复核流程。
 argument-hint: New plan or annual/five-year review? Point to the wiki-life vault (or let me auto-detect it).
 argument-hint-en: New plan or annual/five-year review? Point to the wiki-life vault (or let me auto-detect it).
 argument-hint-zh: 说明是新建长期规划，还是年度（默认 9 月）校准 / 五年复盘；给出 wiki-life 库路径，或让我自动探测。
 user-invocable: true
-version: 1.4.0
+version: 1.4.1
 ---
 
 # wiki-life 人生规划类长文档编撰与复核
@@ -128,16 +128,17 @@ source: 基于 wiki-life 全库综合整理 + YYYY-MM-DD 第 N 轮审视修订�
 3. 更新 `wiki/index.md`，在 `wiki/log.md` **追加**一条（日期 + 变更摘要）
 4. `git add <具体文件> && git commit`（该库为 git 仓库，无需另备份）；仅当远程为**私有仓库**时才 push
 
-### 金额明文的显式覆盖规程（默认脱敏 → 私有性核查 → 覆盖）
+### 金额明文的显式覆盖规程（默认脱敏 → 私有核查 → 覆盖 → 一致性修正）
 
-默认纪律：总额**不留明文**，用基准指数+比值杠杆表达（如"中需求+中通胀=100"），对齐"只留线不留账"。仅当**用户显式要求**留绝对金额时，走以下分支，四步缺一不可：
+默认纪律：总额**不留明文**，用基准指数+比值杠杆表达（如"中需求+中通胀=100"），对齐"只留线不留账"。仅当**用户在当前会话显式裁定**留绝对金额时，走"纪律 → 覆盖 → 一致性修正"流程，五步缺一不可：
 
-1. **私有性核查**：用未授权 GitHub API 探测远端仓库（`api.github.com/repos/<owner>/<repo>` 返回 404 即确认私有），满足 WIKI-SCHEMA"推送远程必须私有"；
-2. **页内限定**：覆盖仅限用户指定的页面/节（如执行页 §二/§三），不外溢到家庭、社保、保险、住房等其他页面的金额；
-3. **log 记覆盖**：在 `wiki/log.md` 追加一条"对清洗范围的显式覆盖"条目——写明触发（用户裁定）、核查结果（404=私有）、覆盖范围与恢复的数字；
-4. **页顶留脱敏提示**：覆盖页顶部加"若仓库可见性变更或需外发，先脱敏 §X/§Y 的金额"提示。
+1. **私有性核查**：用未授权 GitHub API 探测远端仓库（`api.github.com/repos/<owner>/<repo>` 返回 404 即确认私有），满足 WIKI-SCHEMA"推送远程必须私有"；**私有只是允许覆盖的必要条件、不是充分条件**——若既有常设裁定为"私有远端也不留绝对额"，不得仅因仓库私有就恢复明文；
+2. **改回明文**：把用户指定页面/节的基准指数换回绝对金额；
+3. **一致性修正**：`Grep` 该页所有"不留明文 / 只留线不留账 / 已脱敏 / 用指数代替金额"这类旧脱敏措辞，逐条改写为限定表述（如"本页金额已显式覆盖，其余页仍脱敏"）或删除现在已不覆盖本页的那句，避免页面自相矛盾；
+4. **页内限定**：覆盖仅限用户指定的页面/节（如执行页 §二/§三），不外溢到家庭、社保、保险、住房等其他页面的金额；
+5. **log 记覆盖 + 页顶留脱敏提示**：在 `wiki/log.md` 追加一条"对清洗范围的显式覆盖"条目——写明触发（用户裁定）、核查结果（404=私有）、覆盖范围与恢复的数字；若原清洗条目带日期则一并引用为"对 YYYY-MM-DD 清洗范围的显式覆盖"（便于溯源，不写死具体日期）。同时在覆盖页顶部加"若仓库可见性变更或需外发，先脱敏 §X/§Y 的金额"提示。
 
-注意：明文金额与基准指数读法可并存（"两种读法并存"），保留比值版本以便日后脱敏。
+注意：明文金额与基准指数读法可并存（"两种读法并存"），保留比值版本以便日后回退脱敏；但"并存"不等于旧脱敏声明原样保留——第 3 步的一致性修正必做，否则页面同时出现"不留明文"与明文金额会自相矛盾。
 
 ## 阶段 6：年度校准与五年复盘（复用流程）
 
@@ -152,7 +153,7 @@ source: 基于 wiki-life 全库综合整理 + YYYY-MM-DD 第 N 轮审视修订�
 - **数字联动清单**：缓冲金、带宽、覆盖倍数分母这类数字通常出现在主文档 ≥4 处（阶段条目、§表格、结论、衔接表）+ 附录 ≥2 处；改一处先 Grep 该数字找齐全部出现点。
 - 不要把 WebSearch 结果写成无来源的确断；条款类写"截至 YYYY-MM 公开资料"。
 - **用户重复发同一消息多为 UI 重发**：接着当前任务继续做，不要当新指令重开流程或重复执行一遍。
-- **金额明文覆盖四步齐全**：API 探测私有性 → 页内限定 → log 记"显式覆盖"条目 → 页顶留脱敏提示，缺一步都算违规；未核查私有性就恢复明文，或覆盖外溢到其他页面，是实踩边界。
+- **金额明文覆盖五步齐全**：API 探测私有性 → 改回明文 → **一致性修正**（Grep 旧脱敏措辞改写，勿留自相矛盾）→ 页内限定 → log 记"显式覆盖"条目 + 页顶留脱敏提示，缺一步都算违规；未核查私有性就恢复明文，或覆盖外溢到其他页面，是实踩边界。**私有 ≠ 默认可覆盖**：仅当用户在当前会话显式裁定才覆盖，若既有常设裁定"私有远端也不留绝对额"，不得仅因仓库私有就恢复明文。
 
 ## Verification（每轮交付前自检）
 
