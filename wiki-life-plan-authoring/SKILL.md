@@ -4,12 +4,12 @@ name_en: Wiki-Life Long-Term Planning Doc
 name_zh: 长期人生规划文档编撰与年审
 description: Author or annually review a long-term (20+ year) directional life-plan grounded in the user's wiki-life Obsidian vault. Build a real-data profile from the library, confirm placement/horizon/bridging via AskUserQuestion, then produce a directional main doc (phases + triggers + failure list) plus an argumentation appendix; on each new fact judge what it overturns; cross-check every number with nominal-vs-real framing; verify objective facts with WebSearch; iterate in the workspace and never write to the vault before approval; finally ingest per WIKI-SCHEMA with bidirectional links, log, and git. Use when the user asks to draft/revise/audit a comprehensive or 20-year life plan, supplies new facts requiring re-evaluation, or asks to calibrate the plan each year / do a five-year review.
 description_en: Author or annually review a 20+ year directional life-plan grounded in the wiki-life vault: build a profile, output a directional main doc plus argumentation appendix, iterate by judging what each new fact overturns, cross-check numbers, verify facts via WebSearch, then ingest after approval.
-description_zh: 在用户的 Obsidian 库 wiki-life 上编撰或复核人生规划类长文档（长期/多年期方向性规划、养老退休测算、年度复核）。当用户要求制定/修订/审视人生规划、编撰多年期规划文档、提供新事实要求重估规划、要求批判性检查规划盲区，或要求把审定后的规划入库时使用。覆盖读库顺序、先问落点与跨度、方向层+论证层双文件结构、财务口径四查（名义/实际折现、结构通胀分化、方差三档、可逆窗口）、审视报告五分法（区分客观规律与价值判断）、审视式迭代、客观事实必须 WebSearch 核实、审定前不写库、WIKI-SCHEMA 入库与年度复核流程。
+description_zh: 在用户的 Obsidian 库 wiki-life 上编撰或复核人生规划类长文档（长期/多年期方向性规划、养老退休测算、年度复核）。当用户要求制定/修订/审视人生规划、编撰多年期规划文档、提供新事实要求重估规划、要求批判性检查规划盲区，或要求把审定后的规划入库时使用。覆盖读库顺序、先问落点与跨度、方向层+论证层双文件结构、财务口径四查（名义/实际折现、结构通胀分化、方差三档、可逆窗口）、退休资金池通胀敏感性测算（需求档×通胀档两轴 NPV 表、六模块拆解与通胀免疫/高敏标注）、审视报告五分法（区分客观规律与价值判断）、审视式迭代、客观事实必须 WebSearch 核实、审定前不写库、金额明文显式覆盖规程（默认基准指数+比值脱敏→API 核查私有→log 记覆盖→页顶留脱敏提示）、WIKI-SCHEMA 入库与年度复核流程。
 argument-hint: New plan or annual/five-year review? Point to the wiki-life vault (or let me auto-detect it).
 argument-hint-en: New plan or annual/five-year review? Point to the wiki-life vault (or let me auto-detect it).
 argument-hint-zh: 说明是新建长期规划，还是年度（默认 9 月）校准 / 五年复盘；给出 wiki-life 库路径，或让我自动探测。
 user-invocable: true
-version: 1.3.0
+version: 1.4.0
 ---
 
 # wiki-life 人生规划类长文档编撰与复核
@@ -70,6 +70,35 @@ source: 基于 wiki-life 全库综合整理 + YYYY-MM-DD 第 N 轮审视修订�
 3. **方差按低/中/高三档**：教育、父母照护这类高方差项不写单点值——按三档给区间并注明触发条件（如"40W 是公办下限口径，不是期望值；民办/国际/留学量级差 10–50 倍"）；只有低方差项才允许单点值。
 4. **可逆/不可逆窗口**：给每个动作标注窗口属性。商业保险可保期（如 45 岁前）、政策试点资格等属"过窗永久关闭"，必须给 deadline 并进近期衔接表；可逆/可推迟动作标注相应低优先级。
 
+## 退休资金池通胀敏感性测算（附录层标准模板）
+
+退休/资金池类测算除四查外，按以下模板组织（落实四查第 1/2/3 条）：
+
+### 两轴 NPV 表（需求档 × 通胀档）
+
+- 行=需求档（低/中/高），列=通胀档（CPI 低/中/高），单元格=所需资金池规模，**折回退休年现值**：提款额逐年按通胀档上调，再按 CPI 中枢折现回基准年。
+- 基准结论取"中需求+中通胀"交叉点；表外另给全表带宽（最低档到最高档区间），让读者一眼看到两轴各自的杠杆。
+- 各口径标注计价年（如"万元，2029 价"）。
+
+### 六模块拆解
+
+把资金池总额拆成六个模块，各按低/中/高三档给值，**三档加总须与两轴表对应档一致**（勾稽校验）：
+
+1. 生活提款（退休后日常支出的提款额）
+2. 社保空档自缴（退休/领钱空档期自行缴纳部分）
+3. 63 岁后永久缺口（养老金低于支出的长期差额现值）
+4. 教育（子女教育，高方差，三档 mandatory）
+5. 照护缓冲（失能/长期照护）
+6. 保险+尾风险（商业保险缴费 + 尾部风险缓冲）
+
+### 通胀免疫/高敏标注
+
+逐模块标注对通胀的敏感度：社保空档自缴类随缴费基数联动，偏免疫；生活提款随 CPI 平移（中性）；教育、照护、保险+尾风险为**高敏项**——对应"结构通胀分化"里的医疗照护 5–8% 与人工服务 4–6% 假设，不得用综合 CPI 扫平。
+
+### 滚动更新机制
+
+年度规划日（9 月）只替换两个输入——**生活提款实测值 + 当年 CPI 档位**——即可滚出新表，其余输入与结构不动。执行页须按 WIKI-SCHEMA 双向链接回主规划对应 §（如方向层 §8.2/§13），同步 index/log，滚动 updated 字段。
+
 ## 阶段 4：审视式迭代（每轮收到新事实时）
 
 1. **先判定冲击面**：新事实是否推翻既有结论？回复里明确说"这条推翻了我上一版的 X"，并给出改写后的更精确结论。推翻一处，顺着 grep 找联动处（表格、速览、失败清单、附录通常各有一份同源表述）。
@@ -99,6 +128,17 @@ source: 基于 wiki-life 全库综合整理 + YYYY-MM-DD 第 N 轮审视修订�
 3. 更新 `wiki/index.md`，在 `wiki/log.md` **追加**一条（日期 + 变更摘要）
 4. `git add <具体文件> && git commit`（该库为 git 仓库，无需另备份）；仅当远程为**私有仓库**时才 push
 
+### 金额明文的显式覆盖规程（默认脱敏 → 私有性核查 → 覆盖）
+
+默认纪律：总额**不留明文**，用基准指数+比值杠杆表达（如"中需求+中通胀=100"），对齐"只留线不留账"。仅当**用户显式要求**留绝对金额时，走以下分支，四步缺一不可：
+
+1. **私有性核查**：用未授权 GitHub API 探测远端仓库（`api.github.com/repos/<owner>/<repo>` 返回 404 即确认私有），满足 WIKI-SCHEMA"推送远程必须私有"；
+2. **页内限定**：覆盖仅限用户指定的页面/节（如执行页 §二/§三），不外溢到家庭、社保、保险、住房等其他页面的金额；
+3. **log 记覆盖**：在 `wiki/log.md` 追加一条"对清洗范围的显式覆盖"条目——写明触发（用户裁定）、核查结果（404=私有）、覆盖范围与恢复的数字；
+4. **页顶留脱敏提示**：覆盖页顶部加"若仓库可见性变更或需外发，先脱敏 §X/§Y 的金额"提示。
+
+注意：明文金额与基准指数读法可并存（"两种读法并存"），保留比值版本以便日后脱敏。
+
 ## 阶段 6：年度校准与五年复盘（复用流程）
 
 规划自带"年度校准"节（默认每年 9 月、规划日跑一次）与五年复盘锚点（如 2029/2035/2041/2046）。校准走简化回路：读该节触发器 → 只收增量事实 → 按阶段 4 迭代 → 涉及政策/价格类条目重新 WebSearch 核时效 → 输出增量修订（改对应 §，不重写全文）→ 审后入库。每年规划日自评项（如"今年哪件事磨了我"）先问再改。五年复盘以阶段为单位回看"假设 vs 现实"，把结论回灌 `framework/人生阶段与目标` 与主文档，产出仍是同一份主文档的新版本 + 附录，不另起体系。
@@ -112,11 +152,12 @@ source: 基于 wiki-life 全库综合整理 + YYYY-MM-DD 第 N 轮审视修订�
 - **数字联动清单**：缓冲金、带宽、覆盖倍数分母这类数字通常出现在主文档 ≥4 处（阶段条目、§表格、结论、衔接表）+ 附录 ≥2 处；改一处先 Grep 该数字找齐全部出现点。
 - 不要把 WebSearch 结果写成无来源的确断；条款类写"截至 YYYY-MM 公开资料"。
 - **用户重复发同一消息多为 UI 重发**：接着当前任务继续做，不要当新指令重开流程或重复执行一遍。
+- **金额明文覆盖四步齐全**：API 探测私有性 → 页内限定 → log 记"显式覆盖"条目 → 页顶留脱敏提示，缺一步都算违规；未核查私有性就恢复明文，或覆盖外溢到其他页面，是实踩边界。
 
 ## Verification（每轮交付前自检）
 
 1. 版本号：frontmatter、节标题、附录三处一致
-2. 数字：本轮改动的每个数字，Grep 旧值确认无残留；名义/实际口径已声明
+2. 数字：本轮改动的每个数字，Grep 旧值确认无残留；名义/实际口径已声明；通胀敏感性表勾稽——六模块三档加总与两轴表对应档一致
 3. 结构：五要素速览、失败清单、触发器节仍在且与新结论一致
 4. 无重复段落/重复序号
 5. 未审定的草稿没有写入 wiki-life 库；outputs/ 内两文件已 present
