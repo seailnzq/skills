@@ -1,0 +1,49 @@
+examples:
+  - id: fetch-profile-and-audit
+    title:
+      zh: 调出画像文档并体检口径
+      en: Fetch Profile Doc and Audit Staleness
+    description:
+      zh: 一句话触发：找到最新版"对我的认知"文档，交付并顺带体检滞后项
+      en: One-shot flow: locate the latest cognition/profile document, deliver it and audit stale claims
+    prompt:
+      zh: |-
+        把对我的认知的文档调出来我看看，顺便体检一下里面的口径有没有滞后于这几天的最新定调，滞后条目列出来。
+      en: |-
+        Pull up the document about your cognition of me, and audit whether its claims have lagged behind my latest decisions. List the stale items.
+  - id: fetch-and-update-profile
+    title:
+      zh: 按近期信息更新画像
+      en: Update Profile With Recent Info
+    description:
+      zh: 先调出权威版，再依据指定时间段的新增定调重写并回写库内
+      en: Fetch the authoritative version first, then rewrite it with new information from a given period and commit back to the repo
+    prompt:
+      zh: |-
+        把《{{画像文档名，如：认知体系与个人画像}}》调出来，根据 {{时间段，如：最近一周}} 的新增信息更新文档，同时更新分析部分，改回 wiki-life 库内权威版。
+      en: |-
+        Fetch "{{profile document name, e.g. Cognition System & Personal Profile}}", update the document and the analysis sections based on new information from {{period, e.g. the past week}}, and write it back to the authoritative copy in the wiki-life repo.
+  - id: audit-only
+    title:
+      zh: 只做时效体检不回写
+      en: Audit Only, No Write-back
+    description:
+      zh: 比对最新画像与 MEMORY/日记层定调，只输出滞后清单供裁定
+      en: Compare the newest profile against MEMORY/daily-note decisions and output only the stale-item list for adjudication
+    prompt:
+      zh: |-
+        对照 MEMORY 和近 {{天数，如：7}} 天的日记层，检查最新版的认知画像文档有没有滞后的口径（决策触发、持仓结构、随日递减的数字），列清单给我，先不要改文档。
+      en: |-
+        Against MEMORY and the last {{number of days, e.g. 7}} daily notes, check the latest profile document for stale claims (decision triggers, portfolio structure, day-decreasing numbers). Give me a list; do not edit the document yet.
+  - id: fetch-companion-docs
+    title:
+      zh: 一并调出配套画像页
+      en: Fetch Companion Profile Pages
+    description:
+      zh: 主画像之外的证据化剖析、提升计划等配套页一起定位交付
+      en: Locate and deliver evidence deep-dives and plan pages that accompany the main profile
+    prompt:
+      zh: |-
+        把画像的配套页（如 {{配套页名，如：个人需求与性格剖析、认知提升计划}} ）也一并调出来看看，注意选各自库内的最新版。
+      en: |-
+        Also fetch the companion profile pages (e.g. {{page names, e.g. personal needs & personality analysis, cognition improvement plan}}), picking the latest in-repo version of each.

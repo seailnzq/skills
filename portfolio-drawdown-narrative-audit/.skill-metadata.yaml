@@ -1,0 +1,53 @@
+examples:
+  - id: single-paper-audit
+    title:
+      zh: 单张纸回撤叙事审计
+      en: Single-paper drawdown narrative audit
+    description:
+      zh: 对单一领域（如投资回撤）走完四步流水线，输出四行纸结论+反诘+ABC分类表
+      en: Run the full four-step pipeline on one domain (e.g. portfolio drawdown)
+    prompt:
+      zh: |-
+        我最近因持仓回撤心神不宁，请按四步流水线帮我审计投资这张纸：
+        ① 原始事实：{{一句话，如"6月底430w回撤到265w，-38%"}}
+        ② 我的尺子：{{原框架，如"拿10年/产业超越/12-24个月主链收入不兑现是红线"}}
+        ③ 自认触发情况：{{哪些触发了、哪些没有}}
+        ④ 我现在用的词：{{如"硬抗"}}
+      en: |-
+        I'm anxious about my portfolio drawdown. Please audit my paper with the four-step pipeline:
+        1. Facts: {{one sentence, e.g. "down from 430w to 265w, -38% since June"}}
+        2. My ruler: {{original framework, e.g. "hold 10 years / falsified if revenue misses for 12-24 months"}}
+        3. Which rules I think were triggered: {{...}}
+        4. Words I'm using now: {{e.g. "gritting my teeth"}}
+
+  - id: multi-paper-split
+    title:
+      zh: 多领域扰动逐一拆纸
+      en: Multi-domain disturbance split into papers
+    description:
+      zh: 投资回撤+学业+工作同时不顺、打包成"全局不行"时，逐纸拆开审计
+      en: When drawdown, kids' education and career troubles collapse into one global narrative
+    prompt:
+      zh: |-
+        最近心神不宁：投资回撤、孩子学业、工作进展都不顺利，感觉整体都不对劲。
+        请帮我把这三件事逐一拆纸、按四行结构审计，先告诉我每张纸还缺哪些事实。
+        补充背景：{{可选，如"孩子初三月考退步/工作丢单/持仓-38%"}}
+      en: |-
+        I'm restless lately: portfolio drawdown, my kid's grades, and work are all going badly and it feels like everything is falling apart.
+        Please split these into separate papers and audit each with the four-line structure, starting with what facts are missing from each.
+
+  - id: worst-case-anchor
+    title:
+      zh: 极限金额锚定专项
+      en: Worst-case amount anchoring
+    description:
+      zh: 只做第4步：ABC分类+隐含beta校准，把"极限"从心理锚改为分布锚
+      en: Step 4 only: ABC classification + implied beta calibration of the true worst case
+    prompt:
+      zh: |-
+        我的持仓从峰值{{如430w}}跌到{{如265w}}，同期板块指数大约{{如-30%}}。
+        请做回撤ABC分类、算组合隐含beta，并把A类上界和B类尾部的金额区间算给我，
+        我想确认自己到底能不能扛。
+      en: |-
+        My portfolio fell from a peak of {{430w}} to {{265w}}; the sector index fell about {{-30%}} over the same period.
+        Please run the ABC drawdown classification, compute the implied beta, and give me the amount ranges for the Class-A upper bound and Class-B tail so I can confirm what I can actually endure.

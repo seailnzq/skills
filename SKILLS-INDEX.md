@@ -1,6 +1,7 @@
 # SKILLS-INDEX — 个人技能索引表
 
-> 本仓库托管 `~/.workbuddy/skills/` 下的个人沉淀技能。用途与调用方式一览如下。
+> 本仓库托管 `~/.qwenworkcn/skills/` 下的个人沉淀技能。用途与调用方式一览如下。
+> 2026-10-17 增量同步：新增 12 个自研技能（投资/审计/宏观/研报采集/wiki 入库/工具向），下表加粗行为本次新增。官方内置技能与 `dingtalk-*`（DWS 市场安装）不入本库。
 
 | 技能 | 用途（一句话） | 怎么调用 | 关键依赖 |
 |---|---|---|---|
@@ -12,6 +13,18 @@
 | **[wiki-life-plan-authoring](./wiki-life-plan-authoring/SKILL.md)** | 编撰/年审 20 年期方向性人生规划：从 wiki-life 库建真实画像 → 方向层主文档 + 论证层附录双文件 → 逐轮先判推翻什么再联动改，数字名义/实际口径校验，审定后按 WIKI-SCHEMA 入库 | 对话：「整理/修订二十年人生规划」「给条新事实重估」「每年 9 月校准 / 五年复盘」；给 wiki-life 路径或自动探测 | `~/.workbuddy/wiki-life/` 库；llm-wiki 的 WIKI-SCHEMA 约定；WebSearch 核政策/价格；私有库 git 同步 |
 | **[jin-guantao-cybernetics](./jin-guantao-cybernetics/SKILL.md)** | 《控制论与科学方法论》（金观涛/华国凡）知识库技能：可能性空间、控制能力 M/m、共轭控制、负反馈、滤波七法、相对孤立系统、稳态结构、超稳定、自组织、突变理论（飞跃/渐变判据）、黑箱认识论五部位排查 | 对话：说「用 jin-guantao-cybernetics 讲 X」/「ch04 飞跃判据」；用于决策、系统分析、认识失灵排查时引用作者框架 | book-to-skill 生成（扫描版视觉 OCR）；SKILL.md+5 章节文件+术语表+patterns+cheatsheet |
 | **[earnings-guidance-incremental-analysis](./earnings-guidance-incremental-analysis/SKILL.md)** | A 股业绩预告/快报「增量信息」拆解：与上次披露 diff 措辞与数字 → 拆表观 vs 调整后口径 → 反推单季与增速剪刀差 → 列预告未披露的验证项 → 同业镜像表分「行业共性 vs 公司独有」→ 每个数字标注推算/未核实 | 对话：拿到某公司业绩预告后说「拆增量信息」「这是行业共性还是公司独有」「反推单季」 | 公告原文 + 上一次同主体披露（中报预告/中报/快报）；`qwenwork_web_search` 核数 |
+| **[a-share-unlock-calendar](./a-share-unlock-calendar/SKILL.md)** | A 股限售解禁日历批量查询与抛压提示（东财 RPT_LIFT_STAGE）：解禁市值/占总股本比/相对流通盘倍数，按日期排表可接持仓兑现窗口 | 对话：「XX 什么时候解禁」「批量查持仓解禁日历」 | 东方财富数据中心 API；接持仓/估值兑现窗口 |
+| **[a-stock-realtime](./a-stock-realtime/SKILL.md)** | A 股实时行情快查 + 个人持仓盈亏管理 + 当日分时量能异常信号（早盘/尾盘放量、主力抢筹/出货） | 对话：「XX 现在多少钱」「看我的持仓/加一只到持仓」 | 财经行情接口；`scripts/portfolio.py`（持仓为运行时外部文件，不写死金额） |
+| **[fab-capacity-five-ring-audit](./fab-capacity-five-ring-audit/SKILL.md)** | 晶圆代工厂季度财报「五环核查」增量分析 + 跨公司同口径对比（12 英寸约当 wpm 归一）+ 来源三级分级 + 在建产能时间表 | 财报季对话：「核查中芯/华虹季报」「扩产体量/同口径多了多少」「先进产能怎么跟踪」 | 财报实数；五环顺序＝设备到账→有效产能→良率→单位成本毛利→收入 |
+| **[fed-rate-pricing-check](./fed-rate-pricing-check/SKILL.md)** | 美联储利率路径的市场定价核查固定流水线：决议事实→会后期货定价→四方对照→口径校验→回写 wiki 月度利率跟踪页 | 对话：「XX 已被市场定价吗」；FOMC 决议日/月度利率 cron | 四级降级链采集；点阵图 vs 期货 vs 机构预期 |
+| **[macro-news-incremental-brief](./macro-news-incremental-brief/SKILL.md)** | 宏观/产业新闻「增量信息」五步分析骨架：校准口径→拆增量→辨机制→映射持仓主线→回写 wiki 并挂核查提醒 | 对话：抛一条宏观/产业新闻问「怎么看/对持仓意味什么」 | 持仓映射（盈利兑现×估值扩张）；区别于 fed-rate-pricing-check |
+| **[multi-line-distress-four-paper-audit](./multi-line-distress-four-paper-audit/SKILL.md)** | 投资/子女/工作（+配偶父母背景）多线同时「不对劲」时的五线分诊 + 逐张纸四行审计 + 领域专用审点 + 合并收口到一个最小身体/关系动作 | 对话：「最近什么都不顺」「投资/孩子/工作同时出问题」「帮我拆这几件事」 | 与 portfolio-drawdown-narrative-audit 配套（后者做投资深水区） |
+| **[portfolio-drawdown-narrative-audit](./portfolio-drawdown-narrative-audit/SKILL.md)** | A 股组合回撤叙事四步审计：四行纸/叙事语言漂移检测/终局尺子证伪/回撤 ABC 分类 + 隐含 beta 校准 + 最坏值锚定 | 对话：「又跌了怎么办」「回撤怎么自处」「心神不宁扛不住」「三张纸审计」 | jin-guantao 框架 + 用户认知尺子（叙事过剩、钱是约束） |
+| **[user-profile-doc-fetch](./user-profile-doc-fetch/SKILL.md)** | 跨历史会话 outputs 与 wiki-life 定位并交付「认知/画像于我」文档（按 mtime 取权威版），再用最新记忆决策审计其时效并报告待裁决项 | 对话：「你对我的认知」「调出画像」「你多了解我」「更新画像文档」 | 历史 outputs 目录 + wiki-life；mtime 定权威版 |
+| **[wechat-report-mirror-fetch](./wechat-report-mirror-fetch/SKILL.md)** | 中文卖方研报/公众号文章当日采集流水线：金山收藏判当日新增→频道/镜像降级链取全文→并行提炼→固定五要素输出（论点/带日期论据/定价含义/来源URL/未核实项） | 对话：「抓今天新收藏」「郭磊今天写什么」「研报打不开找镜像」 | 金山收藏助手；Reportify 频道；多镜像站降级链 |
+| **[wiki-research-sync](./wiki-research-sync/SKILL.md)** | 深度研究主题归档进 wiki-knowledge 的闭环：外部检索+库内引用→按 WIKI-SCHEMA 建 synthesis 综合页（双向链接）→更新 index/log→校验链接→commit/push；处理代理未开与 vault backup 冲突 | 对话：「深研某主题并入库」「回写综合页」「对已有综合页追加章节深化」 | wiki-knowledge git；WIKI-SCHEMA；双库同步 |
+| **[win-desktop-xlsx-safe-edit](./win-desktop-xlsx-safe-edit/SKILL.md)** | Windows 桌面（或用户目录）已有 .xlsx 的安全端到端编辑：备份→openpyxl 保格式编辑→UTF-8 JSON 校验（避 GBK 乱码）→~$ 锁检查，被占用先出 outputs 再回写 | 对话：「修改桌面上已有中文 xlsx」「改投标参数表/明细表」 | 与 xlsx 技能叠加（规范看 xlsx、文件安全看本技能）；openpyxl |
+| **[industry-research](./industry-research/SKILL.md)** | 面向特定行业/赛道的系统性深度研究：定义/市场规模/竞争格局/技术趋势/政策/投融资多维全面调研，输出结构化行业研究报告 | 对话：「深度研究 XX 行业/赛道」「这块市场多大、格局如何」 | 多来源检索 + 结构化报告模板 |
 
 ---
 
