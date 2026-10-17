@@ -25,6 +25,7 @@
 | **[wiki-research-sync](./wiki-research-sync/SKILL.md)** | 深度研究主题归档进 wiki-knowledge 的闭环：外部检索+库内引用→按 WIKI-SCHEMA 建 synthesis 综合页（双向链接）→更新 index/log→校验链接→commit/push；处理代理未开与 vault backup 冲突 | 对话：「深研某主题并入库」「回写综合页」「对已有综合页追加章节深化」 | wiki-knowledge git；WIKI-SCHEMA；双库同步 |
 | **[win-desktop-xlsx-safe-edit](./win-desktop-xlsx-safe-edit/SKILL.md)** | Windows 桌面（或用户目录）已有 .xlsx 的安全端到端编辑：备份→openpyxl 保格式编辑→UTF-8 JSON 校验（避 GBK 乱码）→~$ 锁检查，被占用先出 outputs 再回写 | 对话：「修改桌面上已有中文 xlsx」「改投标参数表/明细表」 | 与 xlsx 技能叠加（规范看 xlsx、文件安全看本技能）；openpyxl |
 | **[industry-research](./industry-research/SKILL.md)** | 面向特定行业/赛道的系统性深度研究：定义/市场规模/竞争格局/技术趋势/政策/投融资多维全面调研，输出结构化行业研究报告 | 对话：「深度研究 XX 行业/赛道」「这块市场多大、格局如何」 | 多来源检索 + 结构化报告模板 |
+| **[awareness-git-sync](./awareness-git-sync/SKILL.md)** | 记忆(awareness)+自研技能 与 GitHub 私有库(seailnzq/*) 的**双向同步与换机恢复**（本用户此主题默认技能）：上传=刷 md→只纳人读文件→扫真凭据→push(被 vault backup 拒则 rebase 保留双方)；还原=clone 四库→bootstrap(dry-run→-Apply)→补凭据/重建 cron；含两轴隐私(私有库可留金额明文、本机 DLP 才是红线、凭据永不入库) | 对话：「同步记忆/技能到 git」「备份自研技能」=上传；「同步 git 到本地」「从 git 拉回本机」「换机恢复」=还原；或 /awareness-git-sync | 四私有库(wiki-life/wiki-knowledge/skills/awareness)；fine-grained PAT 需含各库白名单；`reference/migration-package.md` 有五件套模板 |
 
 ---
 
