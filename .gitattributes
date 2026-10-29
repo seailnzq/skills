@@ -1,0 +1,11 @@
+# 统一换行符：避免 Windows 工作副本 CRLF 造成的虚假 diff 与 checkout 警告
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.xlsx binary
+*.xlsm binary
+*.pdf binary
+*.zip binary

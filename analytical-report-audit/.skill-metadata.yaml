@@ -1,0 +1,59 @@
+examples:
+  - id: audit-decision-report
+    title:
+      zh: 审计决策报告逻辑
+      en: Audit a Decision Report
+    description:
+      zh: 对一份含量化测算的决策/分析报告做六步逻辑审计
+      en: Run the six-step logic audit on a quantitative decision report
+    prompt:
+      zh: |-
+        请从你的视角重新审视这份报告的分析逻辑、原始数据、计算方法，有没有缺漏：
+
+        报告文件：{{报告文件路径}}
+        这份报告要支撑的决策：{{例如：社保参保地选杭州还是昆明}}
+
+        请按情景对齐、前提贯穿、可复现性、口径一致、无据假设五个维度做审计，发现按严重度排序，每条带行号引用和最小修复动作。
+      en: |-
+        Please re-examine this report's analysis logic, raw data, and calculation methods for gaps:
+
+        Report file: {{report path}}
+        Decision the report supports: {{e.g. which city to register social security}}
+
+        Audit across scenario alignment, premise carry-through, reproducibility, measurement-basis consistency, and unsupported assumptions. Rank findings by severity, each with line references and a minimal fix.
+  - id: pre-execution-selfcheck
+    title:
+      zh: 执行前自检
+      en: Pre-execution Self-check
+    description:
+      zh: 按报告结论动手执行前的最后情景对齐自检
+      en: Final scenario-alignment check before acting on a report's conclusion
+    prompt:
+      zh: |-
+        我准备按这份报告的结论执行：{{我打算怎么做}}
+
+        报告文件：{{报告文件路径}}
+
+        请先检查支撑结论的数字是否与我的实际执行方案在同一情景下，再检查报告自陈的前提有没有落进计算，告诉我哪些结论可信、哪些数字不能当真实预期、执行前还要核实什么。
+      en: |-
+        I plan to execute this report's recommendation: {{what I intend to do}}
+
+        Report file: {{report path}}
+
+        Check whether the numbers supporting the conclusion were computed under the same scenario as my actual plan, and whether the report's stated premises carry through its calculations. Tell me what is trustworthy, which numbers are not real expectations, and what to verify before executing.
+  - id: revision-consistency-sweep
+    title:
+      zh: 多轮修订一致性核查
+      en: Revision Consistency Sweep
+    description:
+      zh: 核查多轮修订后的报告是否有旧数字残留与前后矛盾
+      en: Detect stale numbers and contradictions in a heavily revised report
+    prompt:
+      zh: |-
+        这份报告历经多轮修订（{{版本说明，例如 v1→v4}}），请交叉核对：已修正的关键数字在全文是否还有旧值残留、名义/实际口径是否混用、收口页结论与正文计算是否同一情景。发现按严重度列出并给最小修复动作。
+
+        报告文件：{{报告文件路径}}
+      en: |-
+        This report went through multiple revisions ({{e.g. v1 to v4}}). Cross-check for stale numbers left over after corrections, mixed nominal/real measurement bases, and whether the summary conclusion matches the scenario used in the body. List findings by severity with minimal fixes.
+
+        Report file: {{report path}}

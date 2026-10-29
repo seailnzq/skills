@@ -2,6 +2,7 @@
 
 > 本仓库托管 `~/.qwenworkcn/skills/` 下的个人沉淀技能。用途与调用方式一览如下。
 > 2026-10-17 增量同步：新增 12 个自研技能（投资/审计/宏观/研报采集/wiki 入库/工具向），下表加粗行为本次新增。官方内置技能与 `dingtalk-*`（DWS 市场安装）不入本库。
+> 2026-10-29 增量同步：再新增 2 个自研审计技能（`analytical-report-audit`、`decision-report-audit`）。同批核查结论：其余 10 个已入库技能与本机内容一致（仅换行符差异，已加 `.gitattributes` 统一 `eol=lf`）；`data-report`、`lc2panda-wps-excel` 带 `install_source: official`、`de-ai-writing-cn` 带第三方 `owner/slug`，均属市场安装，按约定不入库；`web-search` 为包装 `qwenwork_web_search` 的单文件薄技能，归属未定、本轮暂未入库。
 
 | 技能 | 用途（一句话） | 怎么调用 | 关键依赖 |
 |---|---|---|---|
@@ -26,6 +27,8 @@
 | **[win-desktop-xlsx-safe-edit](./win-desktop-xlsx-safe-edit/SKILL.md)** | Windows 桌面（或用户目录）已有 .xlsx 的安全端到端编辑：备份→openpyxl 保格式编辑→UTF-8 JSON 校验（避 GBK 乱码）→~$ 锁检查，被占用先出 outputs 再回写 | 对话：「修改桌面上已有中文 xlsx」「改投标参数表/明细表」 | 与 xlsx 技能叠加（规范看 xlsx、文件安全看本技能）；openpyxl |
 | **[industry-research](./industry-research/SKILL.md)** | 面向特定行业/赛道的系统性深度研究：定义/市场规模/竞争格局/技术趋势/政策/投融资多维全面调研，输出结构化行业研究报告 | 对话：「深度研究 XX 行业/赛道」「这块市场多大、格局如何」 | 多来源检索 + 结构化报告模板 |
 | **[awareness-git-sync](./awareness-git-sync/SKILL.md)** | 记忆(awareness)+自研技能 与 GitHub 私有库(seailnzq/*) 的**双向同步与换机恢复**（本用户此主题默认技能）：上传=刷 md→只纳人读文件→扫真凭据→push(被 vault backup 拒则 rebase 保留双方)；还原=clone 四库→bootstrap(dry-run→-Apply)→补凭据/重建 cron；含两轴隐私(私有库可留金额明文、本机 DLP 才是红线、凭据永不入库) | 对话：「同步记忆/技能到 git」「备份自研技能」=上传；「同步 git 到本地」「从 git 拉回本机」「换机恢复」=还原；或 /awareness-git-sync | 四私有库(wiki-life/wiki-knowledge/skills/awareness)；fine-grained PAT 需含各库白名单；`reference/migration-package.md` 有五件套模板 |
+| **[analytical-report-audit](./analytical-report-audit/SKILL.md)** | 量化分析/决策报告的**六步结构化审计**：情景对齐（结论数字与推荐动作是否同一执行世界）→前提-结论交叉引用→可复现性探测（仓库有无测算脚本，无则标非可复现）→计量口径一致性→无据假设标记+爆炸半径→严重度分级收口（带行号锚点+最小修复动作） | 对话：「从你的视角审视这份报告」「审计它的分析逻辑/原始数据/计算方法」「这个测算靠得住吗」 | 与 fab-capacity-five-ring-audit（领域专用财报实跑）、macro-news-incremental-brief（单条新闻）、portfolio-drawdown-narrative-audit（回撤心态）、wiki-research-sync（归档动作）区分 |
+| **[decision-report-audit](./decision-report-audit/SKILL.md)** | wiki-life 个人决策报告的「**五维审计 → 安全写回**」闭环：五维=情景对齐·假设支撑·口径一致·可复现性·优先级排序；修订走 outputs 工作副本→本人确认→写回 commit（push 另行确认），过程留痕区只增不删；收尾固定输出「一段话结论+最佳行动方案+待核实清单」 | 对话：「按你的思路重新调整这份报告」「审计并写回 wiki-life 并 commit」 | 依赖 `analytical-report-audit` 的审计维度 + `win-desktop` 文件安全纪律；对象为 `wiki-life/wiki/execution/*.md` |
 
 ---
 
