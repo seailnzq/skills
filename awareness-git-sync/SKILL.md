@@ -55,6 +55,13 @@ version: 1.3.0
 - 库内 `README.md` 写明：这是镜像快照、权威源是本机 `~/.qwenworkcn/awareness/main/`、下次刷新方法（重刷 md → commit → 远端有备份提交则先 rebase → push）。
 - awareness 库是快照镜像，memory 工具持续改实时源文件，不必追求 git 与实时逐秒一致。
 
+**桥接库内部结构（2026-10-29 现状，动手前先读库内 `README.md` 的「当前状态」表）**:
+- `qwenwork/` — **当前主用**：本机 `~/.qwenworkcn/awareness/main/` 的 `MEMORY.md`/`USER.md`/`AGENTS.md` + `memory/*.md` 整份镜像。
+- `workbuddy/` — WorkBuddy 时代镜像（快照止于 2026-10-18）。
+- `qwenwork-legacy/` — 更旧的只读存档（2026-09 至 10-17），**别再往里写**，也别误当当前权威源。
+- 上行脚本 `portable/wb-snapshot.sh` 把源路径写死在 `~/.workbuddy`，**当前 QwenWork 环境不适用**：改为手工复制 `~/.qwenworkcn/awareness/main/` 的 md 到 `qwenwork/`，再改 README「当前状态/纳入范围/同步方法」+ 追加 `log.md` 条目 → 扫真凭据 → commit → `pull --rebase` → push。
+- 两库均已加 `.gitattributes`（`* text=auto eol=lf`，`*.ps1 eol=crlf`）消除 Windows CRLF 噪音。
+
 ### 3. 隐私扫描（推送前必做）
 
 > ⚠️ 判据以 §8 两轴为准：**金额/仓位数字在私有库属预期允许、不是要清除的命中**；本节真正要拦的只有真凭据（`github_pat_`/`ghp_`/`sk-`/密钥行）。下面的金额/股票代码模式仅作"万一误推到公开库"的兜底提示，私有库命中可放行。
@@ -196,6 +203,7 @@ awareness/portable/
 - **不要同步运行时文件**: `.index.sqlite`、`.hash-state.json` 等是内存索引/缓存，无意义且体积大。
 - **不要同步 DWS 市场技能**: 它们由平台管理，版本随时更新，入 git 会产生持续噪声。
 - **PowerShell 中文输出**: `Get-ChildItem` 对中文文件名的输出可能 mojibake；用 Glob tool 代替。
+- **mtime 不能判同步方向**: git checkout 会把工作副本文件 mtime 刷成检出时间，`find -newer` 会系统性误报"本机更新/仓库缺失"。判据改用 `diff -rq`；判真实漂移用 `diff --strip-trailing-cr`（CRLF/LF 差异会被误判成整文件改动，本轮 15 个技能里 10 个属此类假阳性）。
 - **Read tool 二进制判定**: 如果文件含 `\0` 字节（部分 SQLite 残留），Read 报二进制错误；用 `Select-String` 或 `Get-Content -Encoding UTF8` 处理。
 - **`.ps1` 脚本只写 ASCII**: 含中文时 PS 5.1 按 GBK 解析 UTF-8 文件，报"字符串缺少终止符"。
 - **不用 `-Command` 内联脚本**: Bash 工具执行 `powershell -Command "...$var..."` 时 `$` 变量被外壳吞掉；改为写 `.ps1` 文件后 `powershell -NoProfile -ExecutionPolicy Bypass -File xxx.ps1`。
