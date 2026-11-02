@@ -20,7 +20,7 @@ version: 1.4.1
 
 ## 定位库（不要写死路径）
 
-`wiki-life` 常位于 `C:/Users/l17405/github-repos/wiki-life`（Windows：`C:\Users\<user>\github-repos\wiki-life`；VM/容器可能不同）。先尝试该约定路径；若不存在或无访问权限，用 `mcp__workspace_request_directory` 请求用户选择该 vault 目录后再读。**同一用户往往还有一个 `wiki-knowledge`（对外研报库），二者互不混合——本技能只操作内在系统库 `wiki-life`。**
+`wiki-life` 常位于 `~/.workbuddy/wiki-life`（Windows：`C:\Users\<user>\github-repos\wiki-life`；VM/容器可能不同）。先尝试该约定路径；若不存在或无访问权限，用 `mcp__workspace_request_directory` 请求用户选择该 vault 目录后再读。**同一用户往往还有一个 `wiki-knowledge`（对外研报库），二者互不混合——本技能只操作内在系统库 `wiki-life`。**
 
 ## 阶段 1：读库建立画像（固定顺序）
 

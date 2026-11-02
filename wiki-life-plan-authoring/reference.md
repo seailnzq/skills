@@ -2,7 +2,7 @@
 
 ## 定位 vault（跨平台）
 
-`wiki-life` 是用户的私人「内在系统」Obsidian 库，同时是 git 仓库。约定路径 `C:/Users/l17405/github-repos/wiki-life`：
+`wiki-life` 是用户的私人「内在系统」Obsidian 库，同时是 git 仓库。约定路径 `~/.workbuddy/wiki-life`：
 
 | 环境 | 路径 |
 |------|------|

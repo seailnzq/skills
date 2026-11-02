@@ -17,8 +17,8 @@ user-invocable: true
 
 ## 固定路径与前提
 
-- 会话工作区根：`C:\Users\l17405\.qwenworkcn\workspace\`，每个历史会话有 `{chatId}/outputs/`
-- 画像库（git）：`C:\Users\l17405\github-repos\wiki-life\wiki\`，含 `认知体系与个人画像.md`、`个人需求与性格剖析-2026.md`、`framework/认知提升计划-2026-2031.md` 等
+- 会话工作区根：`C:\Users\sealin\.qwenworkcn\workspace\`，每个历史会话有 `{chatId}/outputs/`
+- 画像库（git）：`~/.workbuddy/wiki-life\wiki\`，含 `认知体系与个人画像.md`、`个人需求与性格剖析-2026.md`、`framework/认知提升计划-2026-2031.md` 等
 - USER.md 中形如"详见 outputs/xxx.md"的相对路径**指向的是生成它时那个历史会话的 outputs 目录，不是当前会话**
 - MEMORY.md 中已有纪律可交叉印证："改综合/画像页先取 github-repos 库内文件（outputs 同名件常是旧拷贝）"
 
@@ -27,8 +27,8 @@ user-invocable: true
 Glob 工具只搜默认工作目录，跨会话档案一律搜不到。直接用 Bash find 两个位置：
 
 ```bash
-find /c/Users/l17405/.qwenworkcn/workspace -maxdepth 3 -iname "*认知*" 2>/dev/null
-find /c/Users/l17405/github-repos/wiki-life -iname "*.md" -path "*认知*" 2>/dev/null
+find /c/Users/sealin/.qwenworkcn/workspace -maxdepth 3 -iname "*认知*" 2>/dev/null
+find /c/Users/sealin/github-repos/wiki-life -iname "*.md" -path "*认知*" 2>/dev/null
 ```
 
 关键词按用户措辞替换（认知/画像/性格/剖析等），并顺带列出同目录伴页（个人需求与性格剖析、认知提升计划等），供 Step 5 提示用户一并调取。
@@ -48,7 +48,7 @@ ls -lt <各副本路径>
 复制选定版到**当前会话** outputs，再用 present_files 交付：
 
 ```bash
-mkdir -p "C:\Users\l17405\.qwenworkcn\workspace\<当前chatId>\outputs" && cp "<权威版路径>" "<当前会话outputs>/<文件名>.md"
+mkdir -p "C:\Users\sealin\.qwenworkcn\workspace\<当前chatId>\outputs" && cp "<权威版路径>" "<当前会话outputs>/<文件名>.md"
 ```
 
 ## Step 4 时效体检（核心价值步骤）

@@ -12,7 +12,7 @@ version: 1.1.0
 
 ## 固定路径与前提
 
-- 知识库：`C:\Users\l17405\github-repos\wiki-knowledge`（git 仓库，分支 `master`，远端 GitHub）
+- 知识库：`~/.workbuddy/wiki-knowledge`（git 仓库，分支 `master`，远端 GitHub）
 - 宪法文件：仓库根 `WIKI-SCHEMA.md`（结构、模板、分类体系如有演进，以它为准）
 - 结构：`raw/`（不可变原文）＋ `wiki/`（`index.md`、`log.md`、`papers/`、`concepts/`、`entities/`、`synthesis/`）
 - 网络：访问 GitHub 依赖本机代理（全局 git config `http.proxy=127.0.0.1:7897`）；该代理可能未开启
@@ -23,7 +23,7 @@ version: 1.1.0
 ### Step 1 预检
 
 ```bash
-cd "C:/Users/l17405/github-repos/wiki-knowledge" && git status --short && git fetch && git log --oneline HEAD..origin/master | head -5
+cd "~/.workbuddy/wiki-knowledge" && git status --short && git fetch && git log --oneline HEAD..origin/master | head -5
 ```
 
 - 读 `WIKI-SCHEMA.md`，确认页面模板与分类体系没有演进。
@@ -93,13 +93,13 @@ tags: [标签1, 标签2, ...]
 对新页所有 `[[链接]]` 逐一确认目标文件存在（全部 OK 才可提交）：
 
 ```bash
-cd "C:/Users/l17405/github-repos/wiki-knowledge/wiki" && grep -o "\[\[[^]|]*\]\]" "synthesis/<新页文件名>.md" | sed 's/\[\[//;s/\]\]//' | sort -u | while read p; do case "$p" in papers/*|concepts/*|entities/*|synthesis/*) f="$p.md";; *) f=$(find . -name "$p.md" | head -1);; esac; if [ -f "$f" ]; then echo "OK   $p"; else echo "MISS $p"; fi; done
+cd "~/.workbuddy/wiki-knowledge/wiki" && grep -o "\[\[[^]|]*\]\]" "synthesis/<新页文件名>.md" | sed 's/\[\[//;s/\]\]//' | sort -u | while read p; do case "$p" in papers/*|concepts/*|entities/*|synthesis/*) f="$p.md";; *) f=$(find . -name "$p.md" | head -1);; esac; if [ -f "$f" ]; then echo "OK   $p"; else echo "MISS $p"; fi; done
 ```
 
 ### Step 8 提交
 
 ```bash
-cd "C:/Users/l17405/github-repos/wiki-knowledge" && git add <本次改动的全部文件> && git commit -m "$(cat <<'EOF'
+cd "~/.workbuddy/wiki-knowledge" && git add <本次改动的全部文件> && git commit -m "$(cat <<'EOF'
 synthesis: <主题>（YYYY-MM-DD）
 
 - 要点1

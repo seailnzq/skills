@@ -48,7 +48,7 @@
 ## 4. 收尾参数范式（第 5 步用）
 
 ### 并入 wiki 跟踪页
-- 目标页通常在 `C:\Users\l17405\github-repos\wiki-knowledge\wiki\synthesis\`。利率类沿用 `月度利率与通胀跟踪报告.md`（见 fed-rate-pricing-check）；油价类找用户既有油价跟踪页。
+- 目标页通常在 `~/.workbuddy/wiki-knowledge\wiki\synthesis\`。利率类沿用 `月度利率与通胀跟踪报告.md`（见 fed-rate-pricing-check）；油价类找用户既有油价跟踪页。
 - 具体建页/追加正文 → 交回 wiki-research-sync；本技能只指出落点、不亲自建页。
 
 ### 挂核查提醒（cron）

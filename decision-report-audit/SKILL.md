@@ -10,7 +10,7 @@ version: 1.0.0
 
 ## 适用对象
 
-- 仓库：`C:\Users\l17405\github-repos\wiki-life`（git 仓库，分支 `master`，远端 GitHub），决策报告多在 `wiki/execution/`。
+- 仓库：`~/.workbuddy/wiki-life`（git 仓库，分支 `master`，远端 GitHub），决策报告多在 `wiki/execution/`。
 - 文件：已成文的 `.md` 决策报告（含 TL;DR/收口页、关键数字表、测算节、过程留痕区、可证伪清单等）。
 - 语言：中文为主，PowerShell 5.1 + cmd 环境（注意 UTF-8/GBK 与 BOM 坑，见常见坑）。
 

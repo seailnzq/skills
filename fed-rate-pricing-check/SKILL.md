@@ -15,7 +15,7 @@ version: 1.0.0
 - 中文卖方研报/公众号当日采集镜像 → 用 `wechat-report-mirror-fetch`
 - 个股行情/持仓 → 用 `a-stock-realtime`
 
-本技能默认回写目标为 `C:\Users\l17405\github-repos\wiki-knowledge\wiki\synthesis\月度利率与通胀跟踪报告.md` 的 FOMC 检验块；若用户指定其他页面，流程不变、目标替换。
+本技能默认回写目标为 `~/.workbuddy/wiki-knowledge\wiki\synthesis\月度利率与通胀跟踪报告.md` 的 FOMC 检验块；若用户指定其他页面，流程不变、目标替换。
 
 ## 步骤
 
@@ -85,7 +85,7 @@ version: 1.0.0
 
 ### 5. 回写 wiki 月度利率跟踪页
 
-目标文件：`C:\Users\l17405\github-repos\wiki-knowledge\wiki\synthesis\月度利率与通胀跟踪报告.md`（FOMC 检验块）+ `wiki\log.md`。
+目标文件：`~/.workbuddy/wiki-knowledge\wiki\synthesis\月度利率与通胀跟踪报告.md`（FOMC 检验块）+ `wiki\log.md`。
 
 1. **硬规则：Edit 前必须同轮先 Read 目标文件**（上一轮读过不算）。先 Read FOMC 检验块附近切片与 log.md 尾部，再 Edit。
 2. 更新 FOMC 检验块：决议行 + 当晚市场行 + 会后定价行（含概率、累计幅度、较会前变动、时点口径）。
@@ -93,7 +93,7 @@ version: 1.0.0
 4. log.md 追加条目：核查结论一句话 + 关键数字 + 双链 `[[synthesis/月度利率与通胀跟踪报告]]`；同轮更新 index 计数与遗留未核实项列表。
 5. git 提交并推送：
    ```bash
-   cd "C:/Users/l17405/github-repos/wiki-knowledge" && git add "wiki/synthesis/月度利率与通胀跟踪报告.md" "wiki/log.md" && git commit -m "synthesis更新: 月度利率跟踪——补录会后期货定价（关键数字摘要）" && git push
+   cd "~/.workbuddy/wiki-knowledge" && git add "wiki/synthesis/月度利率与通胀跟踪报告.md" "wiki/log.md" && git commit -m "synthesis更新: 月度利率跟踪——补录会后期货定价（关键数字摘要）" && git push
    ```
    提交信息风格：主题行"synthesis更新: 页面——一句话结论"，正文列关键数字与判定。
 

@@ -32,7 +32,7 @@ tags: [财报, 巨潮, 爬虫, PDF解析, 知识库]
   - 营业收入/营业总收入、归属于上市公司股东的净利润、扣除非经常性损益、经营活动产生的现金流量净额、总资产、归属于上市公司股东的净资产、加权平均净资产收益率、研发投入占营业收入的比例
 
 ## 知识库入库规范（llm-wiki）
-- PDF → `C:/Users/l17405/github-repos/wiki-knowledge/raw/{年份}/半年报/科创板/{code}-{name}/`（本地归档，**.gitignore 排除**，610 家全文约 1.2GB 不入 git）
+- PDF → `~/.workbuddy/wiki-knowledge/raw/{年份}/半年报/科创板/{code}-{name}/`（本地归档，**.gitignore 排除**，610 家全文约 1.2GB 不入 git）
 - 每公司一页：`wiki/papers/2026-H1-{code}-{name}-半年报.md`，frontmatter 含 source 指向 PDF
 - 页面结构：一句话总结 / 关键财务数据表 / 核心内容提示 / 与投资知识的关系（[[concepts/xxx]] 双向链接）/ 我的批注
 - 行业→概念映射（sealin 框架）：半导体→[[concepts/半导体周期]]、[[concepts/端侧算力]]；通信设备→[[concepts/高成长叙事]]；电池/光伏→[[concepts/反内卷]]

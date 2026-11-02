@@ -68,11 +68,11 @@ Periodically health-check the wiki. Look for:
 The wiki lives at a **user-level** path so it's accessible from any workspace or conversation:
 
 ```
-C:/Users/l17405/github-repos/wiki-knowledge/
+~/.workbuddy/wiki-knowledge/
 ```
 
 This is the default. The LLM should:
-1. **Always check `C:/Users/l17405/github-repos/wiki-knowledge/` first** when the user mentions their wiki, regardless of the current workspace.
+1. **Always check `~/.workbuddy/wiki-knowledge/` first** when the user mentions their wiki, regardless of the current workspace.
 2. If the directory exists and contains `WIKI-SCHEMA.md`, use it directly — no need to ask the user for a path.
 3. Only ask for a custom path if the user explicitly wants a separate wiki.
 
@@ -81,7 +81,7 @@ This is the default. The LLM should:
 When a user wants to create a wiki, follow these steps:
 
 ### Step 1: Initialize Structure
-Create at `C:/Users/l17405/github-repos/wiki-knowledge/` (or a user-specified path):
+Create at `~/.workbuddy/wiki-knowledge/` (or a user-specified path):
 ```
 wiki-knowledge/
 ├── raw/              # Immutable source documents

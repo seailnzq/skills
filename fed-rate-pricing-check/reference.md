@@ -80,7 +80,7 @@ WebFetch 提取 prompt 范式：
 ### git 提交范式
 
 ```bash
-cd "C:/Users/l17405/github-repos/wiki-knowledge" && git add "wiki/synthesis/月度利率与通胀跟踪报告.md" "wiki/log.md" && git commit -q -m "$(cat <<'EOF'
+cd "~/.workbuddy/wiki-knowledge" && git add "wiki/synthesis/月度利率与通胀跟踪报告.md" "wiki/log.md" && git commit -q -m "$(cat <<'EOF'
 synthesis更新: 月度利率跟踪——补录会后期货定价（{核心数字}），{待核实项变动}
 
 - {来源}{时点}：{关键数字}

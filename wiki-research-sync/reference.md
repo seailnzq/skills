@@ -1,6 +1,6 @@
 # wiki-research-sync 参考模板与命令速查
 
-仓库路径以 `REPO=C:\Users\l17405\github-repos\wiki-knowledge` 为例。
+仓库路径以 `REPO=~/.workbuddy/wiki-knowledge` 为例。
 
 ## 1. Synthesis 页 frontmatter 模板
 

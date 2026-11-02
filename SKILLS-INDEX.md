@@ -1,8 +1,8 @@
 # SKILLS-INDEX — 个人技能索引表
 
-> 本仓库托管 `~/.qwenworkcn/skills/` 下的个人沉淀技能。用途与调用方式一览如下。
+> 本仓库托管个人沉淀技能，活目录为 `~/.workbuddy/skills/`（其中多项经 Junction 指向本仓库副本）。用途与调用方式一览如下。
 > 2026-10-17 增量同步：新增 12 个自研技能（投资/审计/宏观/研报采集/wiki 入库/工具向），下表加粗行为本次新增。官方内置技能与 `dingtalk-*`（DWS 市场安装）不入本库。
-> 2026-11-02 增量同步：新增 1 个自研技能 `ai-demand-radar`（AI 需求侧六层跟踪，E 层为持仓链十环传导矩阵）。同批把索引里的库路径由 `~/.workbuddy/wiki-*` 修正为本机实际工作副本 `C:/Users/l17405/github-repos/wiki-*`（旧路径已删除）。
+> 2026-11-02 增量同步：新增 1 个自研技能 `ai-demand-radar`（AI 需求侧六层跟踪，E 层为持仓链十环传导矩阵）。同批校正索引里的库路径口径。
 > 2026-10-29 增量同步：再新增 2 个自研审计技能（`analytical-report-audit`、`decision-report-audit`）。同批核查结论：其余 10 个已入库技能与本机内容一致（仅换行符差异，已加 `.gitattributes` 统一 `eol=lf`）；`data-report`、`lc2panda-wps-excel` 带 `install_source: official`、`de-ai-writing-cn` 带第三方 `owner/slug`，均属市场安装，按约定不入库；`web-search` 为包装 `qwenwork_web_search` 的单文件薄技能，归属未定、本轮暂未入库。
 
 | 技能 | 用途（一句话） | 怎么调用 | 关键依赖 |
@@ -10,9 +10,9 @@
 | **[a-share-headline-earnings](./a-share-headline-earnings/SKILL.md)** | A股 98 家头部企业半年报/年报批量跟踪：下载 PDF → 解析财务 → wiki 入库 → 行业深度分析 → 全景预测 | 对话：披露季说「开始 A 股头部半年报跟踪」；或已配置的 8/25、8/31 定时自动化任务 | 工作区 `Claw/` 下 `all_a_head_*.py` 脚本；巨潮接口；wiki-knowledge |
 | **[cninfo-financial-reports](./cninfo-financial-reports/SKILL.md)** | 巨潮资讯批量下载科创板/创业板财报 PDF → 解析关键财务数据 → llm-wiki 入库（增量更新） | 对话：「批量抓取科创板半年报」「增量更新财报」；脚本：`starboard_h1/00_run_incremental.py` | `Claw/starboard_h1/` 管线（01~07）；PyMuPDF；巨潮接口 |
 | **[fin-statement-bridge](./fin-statement-bridge/SKILL.md)** | 高研发公司净利润 Bridge 拆解：净利增速与收入背离、股份支付(SBC)扭曲利润、净利率归因 | 对话：分析海光/寒武纪/摩尔线程/沐曦等财报时说「拆解净利增速为什么背离」 | 半年报利润表 + 费用/股份支付附注；有效所得税率反推 |
-| **[llm-wiki](./llm-wiki/SKILL.md)** | 用 LLM 增量构建维护个人知识库 wiki（非 RAG）：ingest → 交叉引用 → 综合 → 定期 lint | 对话：所有涉及 wiki 的读写/入库/提问；默认库 `C:/Users/l17405/github-repos/wiki-knowledge/`（另有 wiki-life） | WIKI-SCHEMA.md 约定；index/log 维护；git 同步 |
+| **[llm-wiki](./llm-wiki/SKILL.md)** | 用 LLM 增量构建维护个人知识库 wiki（非 RAG）：ingest → 交叉引用 → 综合 → 定期 lint | 对话：所有涉及 wiki 的读写/入库/提问；默认库 `~/.workbuddy/wiki-knowledge/`（另有 wiki-life） | WIKI-SCHEMA.md 约定；index/log 维护；git 同步 |
 | **[tencent-news](./tencent-news/SKILL.md)** | 7×24 腾讯新闻搜索：热榜、早报/晚报、实时资讯、领域新闻、天气 | 对话：「看今天热点」「早报」「财经新闻」；底层 CLI：`scripts/run-cli.sh help`（Windows 用 `.ps1`） | `tencent-news-cli` + API Key；需先 `cli-state` 检查环境 |
-| **[wiki-life-plan-authoring](./wiki-life-plan-authoring/SKILL.md)** | 编撰/年审 20 年期方向性人生规划：从 wiki-life 库建真实画像 → 方向层主文档 + 论证层附录双文件 → 逐轮先判推翻什么再联动改，数字名义/实际口径校验，审定后按 WIKI-SCHEMA 入库 | 对话：「整理/修订二十年人生规划」「给条新事实重估」「每年 9 月校准 / 五年复盘」；给 wiki-life 路径或自动探测 | `C:/Users/l17405/github-repos/wiki-life/` 库；llm-wiki 的 WIKI-SCHEMA 约定；WebSearch 核政策/价格；私有库 git 同步 |
+| **[wiki-life-plan-authoring](./wiki-life-plan-authoring/SKILL.md)** | 编撰/年审 20 年期方向性人生规划：从 wiki-life 库建真实画像 → 方向层主文档 + 论证层附录双文件 → 逐轮先判推翻什么再联动改，数字名义/实际口径校验，审定后按 WIKI-SCHEMA 入库 | 对话：「整理/修订二十年人生规划」「给条新事实重估」「每年 9 月校准 / 五年复盘」；给 wiki-life 路径或自动探测 | `~/.workbuddy/wiki-life/` 库；llm-wiki 的 WIKI-SCHEMA 约定；WebSearch 核政策/价格；私有库 git 同步 |
 | **[jin-guantao-cybernetics](./jin-guantao-cybernetics/SKILL.md)** | 《控制论与科学方法论》（金观涛/华国凡）知识库技能：可能性空间、控制能力 M/m、共轭控制、负反馈、滤波七法、相对孤立系统、稳态结构、超稳定、自组织、突变理论（飞跃/渐变判据）、黑箱认识论五部位排查 | 对话：说「用 jin-guantao-cybernetics 讲 X」/「ch04 飞跃判据」；用于决策、系统分析、认识失灵排查时引用作者框架 | book-to-skill 生成（扫描版视觉 OCR）；SKILL.md+5 章节文件+术语表+patterns+cheatsheet |
 | **[earnings-guidance-incremental-analysis](./earnings-guidance-incremental-analysis/SKILL.md)** | A 股业绩预告/快报「增量信息」拆解：与上次披露 diff 措辞与数字 → 拆表观 vs 调整后口径 → 反推单季与增速剪刀差 → 列预告未披露的验证项 → 同业镜像表分「行业共性 vs 公司独有」→ 每个数字标注推算/未核实 | 对话：拿到某公司业绩预告后说「拆增量信息」「这是行业共性还是公司独有」「反推单季」 | 公告原文 + 上一次同主体披露（中报预告/中报/快报）；`qwenwork_web_search` 核数 |
 | **[a-share-unlock-calendar](./a-share-unlock-calendar/SKILL.md)** | A 股限售解禁日历批量查询与抛压提示（东财 RPT_LIFT_STAGE）：解禁市值/占总股本比/相对流通盘倍数，按日期排表可接持仓兑现窗口 | 对话：「XX 什么时候解禁」「批量查持仓解禁日历」 | 东方财富数据中心 API；接持仓/估值兑现窗口 |
@@ -32,6 +32,8 @@
 | **[analytical-report-audit](./analytical-report-audit/SKILL.md)** | 量化分析/决策报告的**六步结构化审计**：情景对齐（结论数字与推荐动作是否同一执行世界）→前提-结论交叉引用→可复现性探测（仓库有无测算脚本，无则标非可复现）→计量口径一致性→无据假设标记+爆炸半径→严重度分级收口（带行号锚点+最小修复动作） | 对话：「从你的视角审视这份报告」「审计它的分析逻辑/原始数据/计算方法」「这个测算靠得住吗」 | 与 fab-capacity-five-ring-audit（领域专用财报实跑）、macro-news-incremental-brief（单条新闻）、portfolio-drawdown-narrative-audit（回撤心态）、wiki-research-sync（归档动作）区分 |
 | **[decision-report-audit](./decision-report-audit/SKILL.md)** | wiki-life 个人决策报告的「**五维审计 → 安全写回**」闭环：五维=情景对齐·假设支撑·口径一致·可复现性·优先级排序；修订走 outputs 工作副本→本人确认→写回 commit（push 另行确认），过程留痕区只增不删；收尾固定输出「一段话结论+最佳行动方案+待核实清单」 | 对话：「按你的思路重新调整这份报告」「审计并写回 wiki-life 并 commit」 | 依赖 `analytical-report-audit` 的审计维度 + `win-desktop` 文件安全纪律；对象为 `wiki-life/wiki/execution/*.md` |
 
+| **[obsidian-github-sync](./obsidian-github-sync/SKILL.md)** | Obsidian vault 与 GitHub 备份仓库双向同步：状态检查→拉远程→提交→推送，并处理浅克隆损坏、packed-refs 不更新、CRLF 噪音等故障 | 对话：「同步 Obsidian 库」「备份到 GitHub」「库里 git 行为异常」 | git + SSH；本地 vault 目录与远端私有仓库 |
+| **[policy-to-parents-guide](./policy-to-parents-guide/SKILL.md)** | 把中国政府政策文件（教育/家庭/青年/就业等）转译成面向具体家庭的行动指南：官方源核验 → 要点抽取 → 分人群影响分析 → 习惯与规划建议的结构化报告 | 对话：「教育部发了XX规划，作为家长该怎么理解」「这政策对我家孩子什么影响」 | 官方源检索核验；结构化 markdown 报告输出 |
 ---
 
 ## 详细说明
@@ -43,7 +45,7 @@
 - **已踩坑**：字段名带单位后缀、跨行单位声明、保险/银行报表特例、目录页干扰。
 
 ### 2. cninfo-financial-reports — 巨潮财报批量入库
-- **干什么**：批量下载科创板/沪深定期报告到 `C:/Users/l17405/github-repos/wiki-knowledge/`，生成每公司「财报关键信息页」并与投资概念双向链接。
+- **干什么**：批量下载科创板/沪深定期报告到 `~/.workbuddy/wiki-knowledge/`，生成每公司「财报关键信息页」并与投资概念双向链接。
 - **管线**：`starboard_h1/` 下 01_fetch_orgids → 02_fetch_links → 03/05_extract → 04/06_gen_wiki → 07_gen_deep；`00_run_incremental.py` 一键增量。
 - **产出**：`wiki/papers/2026-H1-{code}-{name}-半年报.md` + 综合页景气矩阵 + index/log 更新。
 
@@ -55,7 +57,7 @@
 ### 4. llm-wiki — 个人知识库模式
 - **干什么**：Karpathy LLM-Wiki 模式——LLM 增量编译、交叉引用、维护持久化结构化 wiki。三层架构：raw（不可变源）→ wiki（LLM 写）→ schema。
 - **三个操作**：Ingest（新源入库）/ Query（带引用作答，好答案回写为页）/ Lint（健康检查：矛盾、孤立页、缺失链接）。
-- **默认位置**：`C:/Users/l17405/github-repos/wiki-knowledge/`（宏观/投资）+ `C:/Users/l17405/github-repos/wiki-life/`（人生系统）。
+- **默认位置**：`~/.workbuddy/wiki-knowledge/`（宏观/投资）+ `~/.workbuddy/wiki-life/`（人生系统）。
 
 ### 5. tencent-news — 腾讯新闻搜索
 - **干什么**：7×24 新闻/热榜/早晚报/领域新闻/天气查询，聚焦国内与国际热点。
@@ -63,7 +65,7 @@
 - **核心约束**：所有调用走 `run-cli` 脚本，先读 `help` 不硬编码；CLI 失败不降级到 WebSearch。
 
 ### 6. wiki-life-plan-authoring — 长期人生规划编撰与年审
-- **干什么**：基于 `C:/Users/l17405/github-repos/wiki-life/`（人生系统库）编撰或年度复核一份 20 年期方向性人生规划。核心不是一次写完，而是「建真实画像 → 定规格 → 分层产出 → 逐条校对 → 先审后入库」。
+- **干什么**：基于 `~/.workbuddy/wiki-life/`（人生系统库）编撰或年度复核一份 20 年期方向性人生规划。核心不是一次写完，而是「建真实画像 → 定规格 → 分层产出 → 逐条校对 → 先审后入库」。
 - **产出结构**：主文档＝方向层（终局视角、阶段划分、触发器而非日历、失败清单、五要素速览、事实确认状态、近期衔接）；附录＝论证层（通胀/财务测算、保险精析、政策与尾部风险、口径推导）。两文件用 §编号互指，命名 `<跨度>人生规划-<起年>-<止年>`。
 - **关键纪律**：新事实先判定推翻了什么再逐处 grep 联动改；**财务口径四查**（①名义 vs 实际折现——跨期对比先折现到同一口径，实踩坑"A 缺口 1240 实为 2860"；②结构通胀分化——综合 CPI 锚之外医疗照护 5–8% 等分项单列；③高方差项按低/中/高三档给区间不写单点值；④可逆/不可逆窗口——商业保险可保期等"过窗永久关闭"动作给 deadline）；用户要求"再审视/找盲区"时按**审视报告五分法**输出（客观硬伤/方差低估/结构性盲区/框架可商榷点/内容性缺席），只改客观规律可校验部分、价值判断声明不动；政策/价格等客观事实一律 WebSearch 核实并标时点；隐私数字**「只留线不留账」**（方向层只留阈值与带宽，明细留附录）；**未审定绝不写库**。（以上四查与五分法为 v1.3.0 增补）
 - **入库**：用户点头后按 WIKI-SCHEMA 落 `framework/`＋`synthesis/`，补双链、更新 index、在 log 追加、git commit；远程为私有库才 push。
