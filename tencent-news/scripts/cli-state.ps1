@@ -3,26 +3,18 @@
 # cli-state.ps1 — Output install state, version/update status, and API key status.
 # Usage: powershell scripts/cli-state.ps1
 
-param(
-  [Parameter(Position = 0)]
-  [string]$Command
-)
-
 $ErrorActionPreference = "Stop"
 
-function Fail([string]$Message) {
-  Write-Error "Error: $Message"
-  exit 1
-}
+. (Join-Path $PSScriptRoot "cli-runtime.ps1")
+$Command = if ($args.Count -gt 0) { $args[0] } else { $null }
+if ($args.Count -gt 1) { Fail "expected one state command" }
 
-if ($Command -eq "help") {
-  Write-Host "Usage: powershell scripts/cli-state.ps1"
-  Write-Host ""
-  Write-Host "Print install state, version/update status, and API key status."
+if ($Command -in @("help", "-h", "--help")) {
+  Show-CliUsage
   exit 0
 }
 
-if ($Command) {
+if ($Command -and $Command -ne "status") {
   Fail "unknown argument: $Command"
 }
 
@@ -216,26 +208,24 @@ if ($CliExists) {
 
 # ── output JSON ──────────────────────────────────────────────────────
 
-$cliPathJson = $CliPath.Replace("\", "/")
-$cliExistsJson = if ($CliExists) { "true" } else { "false" }
-
-Write-Output @"
-{
-  "platform": {
-    "os": "$Os",
-    "arch": "$Arch",
-    "cliPath": "$cliPathJson",
-    "cliSource": "$CliSource"
-  },
-  "cliExists": $cliExistsJson,
-  "update": {
-    "needUpdate": $UpdateNeedUpdate,
-    "error": $UpdateError
-  },
-  "apiKey": {
-    "status": "$ApiKeyStatus",
-    "present": $ApiKeyPresent,
-    "error": $ApiKeyError
-  }
+$code = if (-not $CliExists) {
+  "CLI_NOT_INSTALLED"
+} elseif ($ApiKeyStatus -eq "missing") {
+  "API_KEY_MISSING"
+} elseif ($ApiKeyStatus -ne "configured") {
+  if ($ApiKeyError -match 'invalid api key|unauthorized|401|403|API Key 无效|鉴权|认证失败') { "API_KEY_UNAUTHORIZED" } else { "ENVIRONMENT_CHECK_FAILED" }
+} else {
+  "READY"
 }
-"@
+$result = Get-CliResult $code
+$result.platform = @{ os = $Os; arch = $Arch; cliPath = $CliPath.Replace("\", "/"); cliSource = $CliSource }
+$result.cliExists = $CliExists
+$result.update = @{
+  needUpdate = if ($UpdateNeedUpdate -eq "null") { $null } else { $UpdateNeedUpdate -eq "true" }
+  error = if ($UpdateError -eq "null") { $null } else { "Unable to check CLI updates." }
+}
+$result.apiKey = @{
+  status = $ApiKeyStatus; present = $ApiKeyPresent -eq "true"
+  error = if ($ApiKeyError -eq "null") { $null } else { "Unable to verify API key state; see error.code and the setup guide." }
+}
+$result | ConvertTo-Json -Depth 5

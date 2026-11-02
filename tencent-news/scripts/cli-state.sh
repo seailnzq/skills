@@ -5,10 +5,11 @@ set -e
 # Usage: sh scripts/cli-state.sh
 
 # ── helpers ──────────────────────────────────────────────────────────
-fail() { echo "Error: $1" >&2; exit 1; }
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+. "$SCRIPT_DIR/cli-runtime.sh"
 
 json_escape() {
-  printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g; s/	/\\t/g' | tr '\n' ' '
+  printf '%s' "$1" | sed 's/\\/\\\\/g; s/"/\\"/g; s/	/\\t/g' | tr '\r\n' '  '
 }
 
 json_bool() {
@@ -30,20 +31,14 @@ resolve_command_cli_path() {
 }
 
 # ── argument parsing ─────────────────────────────────────────────────
-while [ $# -gt 0 ]; do
+if [ "$#" -gt 0 ]; then
+  [ "$#" -eq 1 ] || fail "expected one state command"
   case "$1" in
-    help)
-      echo "Usage: sh scripts/cli-state.sh"
-      echo ""
-      echo "Print install state, version/update status, and API key status."
-      exit 0
-      ;;
-    *)
-      fail "unknown argument: $1"
-      ;;
+    help|-h|--help) cli_usage; exit 0 ;;
+    status) shift ;;
+    *) fail "unknown state command" ;;
   esac
-  shift
-done
+fi
 
 # ── platform detection ───────────────────────────────────────────────
 detect_os() {
@@ -159,8 +154,11 @@ else
 fi
 
 # ── output JSON ──────────────────────────────────────────────────────
+cli_state_fields
+CLI_PATH="$(json_escape "$CLI_PATH")"
 cat <<EOF
 {
+  ${CLI_RESULT_FIELDS:-}
   "platform": {
     "os": "$OS",
     "arch": "$ARCH",

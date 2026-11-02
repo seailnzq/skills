@@ -5,10 +5,7 @@
 
 $ErrorActionPreference = "Stop"
 
-function Fail([string]$Message) {
-  Write-Error "Error: $Message"
-  exit 1
-}
+. (Join-Path $PSScriptRoot "cli-runtime.ps1")
 
 function Get-CommandOutput {
   param(
@@ -148,8 +145,14 @@ function Test-SupportsCallerArg([string]$CliPath) {
 # ── main ─────────────────────────────────────────────────────────────
 
 if ($args.Count -eq 0) {
-  Fail "missing CLI command"
+  Show-CliUsage
+  exit 0
 }
+if ($args.Count -eq 1 -and $args[0] -in @("-h", "--help")) {
+  Show-CliUsage
+  exit 0
+}
+$script:CliHelpRequest = $args.Count -eq 1 -and $args[0] -eq "help"
 
 # Check for manually passed --caller
 foreach ($a in $args) {

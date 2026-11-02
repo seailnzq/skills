@@ -12,6 +12,8 @@ curl -fsSL https://mat1.gtimg.com/qqcdn/qqnews/cli/hub/tencent-news/setup.sh | s
 
 安装完成后重新打开终端（或执行 `source ~/.zshrc`），运行 `tencent-news-cli help` 确认安装成功。
 
+智能体侧不需要重开终端：`scripts/cli-state.sh` 与 `scripts/run-cli.sh` 按固定安装路径查找 CLI，安装后直接重新执行状态脚本即可。脚本按 `$SHELL` → 系统登录 shell → 已有 RC 文件的顺序探测 shell 类型；`$SHELL` 为空的环境（CI、容器、智能体沙箱）也能正确写入环境变量块，探测全部失败时写入 `~/.profile`。
+
 ## Windows
 
 打开 PowerShell，执行以下命令：

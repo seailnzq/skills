@@ -3,7 +3,8 @@ set -e
 
 # run-cli.sh — Execute tencent-news-cli with --caller injected from SKILL.md.
 
-fail() { echo "Error: $1" >&2; exit 1; }
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+. "$SCRIPT_DIR/cli-runtime.sh"
 
 resolve_command_cli_path() {
   resolved_path="$(command -v "$1" 2>/dev/null || true)"
@@ -124,14 +125,10 @@ supports_caller_arg() {
   compare_versions "$current_version" "1.0.12"
 }
 
-if [ $# -eq 0 ]; then
-  fail "missing CLI command"
-  exit 1
-fi
+cli_run_help "$@"
 
 has_caller_flag "$@" && fail "do not pass --caller manually; scripts/run-cli.sh injects it from SKILL.md"
 
-SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 SKILL_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 CLI_FILENAME="tencent-news-cli"
 LOCAL_CLI_PATH="$SKILL_DIR/$CLI_FILENAME"

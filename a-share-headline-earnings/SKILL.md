@@ -25,7 +25,7 @@ tags: [财报, A股, 行业分析, 全景预测, 巨潮, 知识库]
 
 ## 管线脚本
 1. **`all_a_head_fetch.py`** — 下载半年报 PDF（增量）
-   - 输入：`all_a_head_manifest.json`；输出 PDF → `~/.workbuddy/wiki-knowledge/raw/2026/半年报/全A头部/{code}-{name}/`
+   - 输入：`all_a_head_manifest.json`；输出 PDF → `C:/Users/l17405/github-repos/wiki-knowledge/raw/2026/半年报/全A头部/{code}-{name}/`
    - 支持沪深京三地：board → column/plate（sh→sse/sh，sz→szse/sz）
    - 运行：`cd C:/Users/sealin/WorkBuddy/Claw && python all_a_head_fetch.py`
 2. **`all_a_head_process.py`** — 解析 + 生成 wiki 页 + 输出聚焦清单
