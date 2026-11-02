@@ -1,0 +1,50 @@
+date,layer,code,indicator,value,unit,yoy_pct,doubling_time_months,source_grade,source,note
+2026-11-02,A,A1,task_horizon_50pct,12,hour,,4.3,1,METR,Claude Opus 4.6; Mythos Preview 17h provisional
+2026-11-02,A,A3,unit_task_cost_index,1.0,index,,,2,光大证券,3月2.0 9月末1.0
+2026-11-02,B,B1,enterprise_adoption_us,56,pct,,,2,Census BTOS/光大,2023初<10pct
+2026-11-02,C,C5,gpu_rental_b200,5.88,index,,,2,光大SDB200RT,年初4.40
+2026-11-02,D,D1,ai_revenue_over_capex_low,13.8,pct,,,1,计算值,剔除云渠道重复口径
+2026-11-02,D,D1,ai_revenue_over_capex_high,17.4,pct,,,1,计算值,含云渠道口径
+2026-11-02,E,E2,nvidia_share_cn,34,pct,-44,1,IDC,2026H1
+2026-11-02,E,E2,huawei_share_cn,28,pct,100,1,IDC,2026H1 57.2万颗
+2026-11-02,E,E2,hygon_share_cn,3,pct,,1,IDC,2026H1 国产第4-5
+2026-11-02,E,E3,hygon_units_2025,8.3,wan,,,1,IDC,2025全年
+2026-11-02,E,E4,gpu_utilization_cn,30,pct,,,2,腾讯云,行业平均上限
+2026-11-02,E,E2_coef,transmission_coef_chip,0.30,ratio,2-3q,,3,估算,海光29pct 翱捷8pct
+2026-11-02,E,E3_coef,transmission_coef_fab,0.60,ratio,1-2q,,3,估算,中芯27pct
+2026-11-02,E,E4_coef,transmission_coef_package,0.50,ratio,1-2q,,3,估算,盛合10pct
+2026-11-02,E,E5_coef,transmission_coef_memory,0.80,ratio,1-2q,,3,估算,长鑫1.5pct
+2026-11-02,E,E6_coef,transmission_coef_switch,0.70,ratio,2-3q,,3,估算,盛科24pct
+2026-11-02,E,E7_coef,transmission_coef_power,0.20,ratio,3-4q,,3,估算,英诺0.1pct
+2026-11-02,E,E8_coef,transmission_coef_equip,0.90,ratio,lag1-2q,,3,估算,观察池
+2026-11-02,E,E9_coef,transmission_coef_optical,0.90,ratio,sync,,3,估算,观察池
+2026-11-02,E,E10_coef,transmission_coef_server,1.00,ratio,sync,,3,估算,观察池
+2026-11-02,E,E11_coef,transmission_coef_edge,0.40,ratio,3-4q,,3,估算,观察池
+2026-11-02,E,E12,portfolio_weighted_elasticity,0.50,ratio,~2q,,3,计算值,sum(weight*coef)
+2026-11-02,E,E2a,hygon_q3_revenue_yoy,45.46,pct,,5.54,1,海光三季报,Q3营收58.56亿 环比+15.6
+2026-11-02,E,E2a,hygon_q2_revenue_yoy,65.30,pct,,4.14,2,反算,Q2营收50.66亿 推算
+2026-11-02,E,E2b,asr_q3_revenue_yoy,38.76,pct,,6.35,1,翱捷三季报,Q3营收13.63亿
+2026-11-02,E,E2b,asr_asic_q3_revenue_yoy,948,pct,,0.88,1,翱捷三季报,ASIC定制单季
+2026-11-02,E,E2b,asr_asic_backlog,28.5,yi_cny,,,1,翱捷三季报,H1末15亿 量产占比近50pct
+2026-11-02,E,E3,smic_q2_revenue_yoy,36.10,pct,,6.74,1,中芯Q2财报,30.06亿美元
+2026-11-02,E,E3,smic_q3e_revenue_yoy,29.92,pct,,7.94,2,分析师一致预期,Q3财报11-12
+2026-11-02,E,E4,sjsemi_q3_revenue_yoy,-8.33,pct,,,1,盛合三季报,由H1的+2.61转为负增长
+2026-11-02,E,E4,sjsemi_q3_netprofit_yoy,-45.96,pct,,,1,盛合三季报,核心物料TSV转接板断供
+2026-11-02,E,E5,dr_ram_q4_contract_qoq,12.5,pct,,,2,TrendForce,普通DRAM 10-15 含HBM 15-20
+2026-11-02,E,E6,suzhou_centec_q3_revenue_yoy,44.24,pct,,5.68,1,盛科三季报,Q3营收4.67亿 环比+10.55
+2026-11-02,E,E6,suzhou_centec_contract_liability_qoq,220.81,pct,,,1,盛科三季报,1.84亿 订单先行指标
+2026-11-02,E,E6,suzhou_centec_gross_margin_yoy,-10.85,pct,,,1,盛科三季报,42.14pct 价格漏损硬证据
+2026-11-02,E,E7,innoscience_h1_revenue_yoy,50.65,pct,,4.50,1,英诺中报,H1 8.34亿 无Q3数据
+2026-11-02,E,E7,innoscience_ai_shipment_yoy,183,pct,,,1,英诺中报,339万颗到963万颗
+2026-11-02,E,E8,naura_q3_revenue_yoy,1.31,pct,,47.60,1,北方华创三季报,合同负债+23.54
+2026-11-02,E,E8,amec_q3_revenue_yoy,17.18,pct,,,1,中微三季报,合同负债-25.6
+2026-11-02,E,E9,innolight_q3_revenue_yoy,171.83,pct,,2.08,1,中际旭创三季报,订单覆盖2027全年
+2026-11-02,E,E10,fii_q3_revenue_yoy,57.73,pct,,4.56,1,工业富联三季报,云计算+75
+2026-11-02,E,E10,fii_ai_asic_shipment_qoq,80,pct,,,1,工业富联三季报,GPU机柜仅+15
+2026-11-02,E,E11,rockchip_q3_revenue_yoy,43.57,pct,,6.25,1,瑞芯微三季报,环比-6.02 PCB缺料
+2026-11-02,E,E11,amlogic_q3_revenue_yoy,58,pct,,,1,晶晨三季报,
+2026-11-02,E,E11,bestechnic_q3_revenue_yoy,-20.03,pct,,,1,恒玄三季报,存储涨价挤压
+2026-11-02,E,E13,portfolio_revenue_yoy_q3,43.20,pct,,,2,计算值,含长鑫
+2026-11-02,E,E13,portfolio_revenue_yoy_q3_ex_clcx,34.20,pct,,,2,计算值,剔除长鑫
+2026-11-02,E,E12,portfolio_weighted_elasticity_measured,0.56,ratio,,,2,计算值,43.2/77
+2026-11-02,E,E12,portfolio_weighted_elasticity_calibrated,0.46,ratio,,,3,校准值,用校准后系数重算
